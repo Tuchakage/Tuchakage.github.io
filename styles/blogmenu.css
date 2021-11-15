@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+  background-color: #f0e8c5;
+  margin: 0;
+}
+
+/* Gets rid of the Bullet points */
+/* Edit This To Edit The Black Bar */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /*Stops the elements of "li" from going outside of the list*/
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+/*Makes Navigation bar horizontal */
+li {
+  float: left;
+}
+/*Makes block around the links show up (FOR TEXT)*/
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 25px;
+  text-decoration: none;
+  position: relative;
+  left: 700px;
+}
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+/* When the tag "li a" that is being hovered is not active then the link should change to this colour */
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+/* Depending on the page you are on it will be highlighted in the navigation bar */
+.active {
+
+background-color:#f0e8c5;
+color:black;
+}    
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  overflow: hidden;
+  box-shadow: 0px 2px 20px #d7dfe2;
+  background: white;
+  border-radius: 0.5rem;
+  position: relative;
+  width: 350px;
+  margin: 1rem;
+  top: 100px;
+  transition: 250ms all ease-in-out;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 2px 40px #d7dfe2;
+}
+
+.banner-img {
+  position: absolute;
+  object-fit: cover;
+  height: 14rem;
+  width: 100%;
+}
+
+.category-tag {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  background: red;
+  padding: 0.5rem 1.3rem 0.5rem 1rem;
+  text-transform: uppercase;
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  border-radius: 0 2rem 2rem 0;
+}
+
+.opengl {
+  background: #ef257a;
+}
+
+.technology {
+  background: #651fff;
+}
+
+.ai {
+  background: #e85808;
+}
+
+.card-body {
+  margin: 15rem 1rem 1rem 1rem;
+}
+
+.blog-hashtag {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4d97b2;
+}
+
+.blog-title {
+  line-height: 1.5rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.blog-description {
+  color: #616b74;
+  font-size: 0.9rem;
+}
+
