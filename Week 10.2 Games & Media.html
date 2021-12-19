@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 10 Games & Media</title>
+    <link rel="stylesheet" href="styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="./javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My Projects</a></li>
+        <li><a class = "active" href="blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 10 - Fixing A Few Problems I Found</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Dec 16, 2021</h5>
+
+            <h2 class = "normal">Problem With Packing Mini game</h2>
+            <p>I noticed how in the Packing Mini game when you shoot another Donut at a package that is already closed, you will still get points from it. To fix this all i had to do was go to the script that handles the collision between the Package and the Donut and i just had to disable the box collider on the Package after its sprite has changed to being closed (Being hit by the Donut).</p>
+            
+            <h2 class = "normal">Problem With Containers Back For Round 2.....</h2>
+            <p>There was another problem i found whilst play testing the game and that was that the previous problem where when a container was already full but then the player puts the wrong ingredient inside of it but the game will still think its full came back, im pretty sure this problem came back because the amount of items needed to fill up the container has been changed. </p>
+            <p>My solution to this problem is that i created a function that everytime the wrong ingredients is put into the wrong container the function will check if the "isComplete" variable (Which i put there at the beginning of the project but was never used) is true and if it is then it will tell the game manager that one container is no longer complete and it will set "isComplete" but to false.</p>
+            
+            <!-- <h5 class = "normal">Feedback Checklist</h5> -->
+            <img class="img" src="images\Week 10\Solution To Container Problem.png" alt="">
+            </div>
+          </div>
+    
+
+          
+        </div>
+  
+  </body>
+</html>

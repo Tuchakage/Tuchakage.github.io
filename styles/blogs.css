@@ -134,8 +134,8 @@ li {
 
 /* Slideshow container */
 .container {
-  max-width: 1000px;
   position: relative;
+  max-width: 1000px;
   margin: auto;
 }
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 7 Games & Media</title>
+    <link rel="stylesheet" href="styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="./javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My Projects</a></li>
+        <li><a class = "active" href="blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 7 - Juicy Game Ideas</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Nov 22, 2021</h5>
+
+            <h2 class = "normal">Feedback From A Friend</h2>
+            <p>I sent one of my friends who were interested in what game i was making a link to the game on the google play store and a google form sheet to give us some feedback. The feedback we received from his was very good, he mentioned how for the sprinkles mini game he had no idea what to do until i told him so that tells us that we have to add instructions to how to play each mini game.</p>
+            <p>He also mentioned how we need to make it so the game is beatable which we will obviously will do i just had to explain to him that it was a prototype showing off the core mechanics. He also gave us a few ideas one of them being to increase the conveyor belt speed as you put in more items into the correct container to make the game more challenging which i think is a good idea. The other idea was a whole new mini game which is Tetris but with Donuts instead.</p>
+            
+            <h2 class = "normal">Responding To Feedback</h2>
+            <p>The first thing i did was increase the Conveyor Belt speed from what our Lecturer Hope told us last week about how she feels like the Conveyor belt moves way too slow even for a beginner level. I implemented a feature where the bowls will change sprite for when they are half full and another sprite for when they are full. </p>
+            <p>I did this in the **Container Script** which is where all the collisions for the containers are stored inside, i made it so first whenever an item is put into the correct container then a variable (depending on the type of item) will be incremented by 1. I then created an if statement that everytime an item is put into the correct container then it will check if it is half full or full and then from there it will change the sprite which are stored in a separate variable of type Sprite one for half full containers and one for full containers. This has only been done for the Measuring Cup (Milk Container) and the Yeast Bowl, i am currently waiting for the other container sprites to be done.</p>
+            
+            <h2 class = "normal">Group Discussion</h2>
+            <p>Me, Shaafie and Hassan had a Discord where we discussed how the winning and losing condition would work. Hassan suggested that we should make it so that if the player get 3 items into the wrong container then they will lose the level, i thought that was a good idea until i realised that will make the Timer completely useless thats when Shaafie said that we could save that for an extremely hard level. We all agreed that you win the level by sucessfully filling up all the containers.</p>
+            <p> Finally we added another feature to make the game hard which is where if you put the wrong item in a container that has already been filled up a bit, then the amount of the item in that ingredient will be set back by 1.</p>
+            
+            <!-- <h5 class = "normal">Feedback Checklist</h5> -->
+            <img class="img" src="images\feedback 1.png" alt="">
+            <img class="img" src="images\sticky note 1.png" alt="">
+            <img class="img" src="images\filling up containers.png" alt="">
+
+            </div>
+          </div>
+    
+
+          
+        </div>
+  
+  </body>
+</html>
