@@ -128,10 +128,12 @@ video{
   padding: 16px;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 50px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+  background-color: transparent;
+  border: transparent;
 }
 
 /* Position The Right Arrow to the right */
@@ -148,7 +150,7 @@ video{
 
 /* On hover, add a black background color with a little bit see-through */
 .leftarrow:hover, .rightarrow:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: #f0e8c5;
 }
 
 .overlay {
