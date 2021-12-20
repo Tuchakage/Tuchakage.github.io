@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 11 Games & Media</title>
+    <link rel="stylesheet" href="styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="./javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My Projects</a></li>
+        <li><a class = "active" href="blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 11 - The Final Week......</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Dec 19, 2021</h5>
+
+            <h2 class = "normal">The Final Plan</h2>
+            <p>It was the final week before the deadline and as a team we decided to use this week to just focus on polishing up our game and adding sound/ music for our game. Not only that but to make it easier for our examiner to test out the different levels i created a practice mode where she can just play the mini games without having to play the whole level. I also added a hard mode which is my favourite to play on since it is so much more challenging compared to Easy and Medium mode.</p>
+            <p>Since it was extremely simple to implement I quickly added in a feature where it shakes the camera whenever you shake your phone in the Sprinkles scene, but i realised that since you are already shaking your phone you cant really see it.</p>
+
+            <h2 class = "normal">Problem With Pausing In Packing Mini Game again....</h2>
+            <p>I realised when shooting the Donut from the slingshot and then pausing whilst its airborne the Donut will just stop in place and just fall down. I then tried taking the DonutControl script out of the actual Donut object and attaching it to an empty Game Object which i named "Donut Launcher" and tried setting the Pause Game Script "_toBeDisabled" variable to the new Donut Launcher object, but that still didnt work.</p>
+            <p>I found out that the reason for this was because when you pause the game it stops the Coroutine for the Donut being launched, i tried a few solutions but they didnt work so instead of a pause button i just turned it into a restart button so that the player is still able to restart the game but they cannot pause. </p>
+            
+            <h2 class = "normal">Changing How The Next Donut Will Be Spawned After Shot</h2>
+            <p>Since the DonutControl script used to be on the Donut object itself and it used to spawn the next Donut in by getting reference to itself, i had to change how Donuts will be spawned in. This new way of spawning Donuts in is much more better in my opinion because once the Donut is scaled in the Packing Mini game, i put its position to be very far away from the main camera and then whenever i need to spawn in the next Donut i just get reference to that instead. </p>
+            <p>This is a much better way than i did before because it required me to make sure i spawned in a new Donut before destroying the one that had been currently shot.</p>
+            </div>
+          </div>
+    
+
+          
+        </div>
+  
+  </body>
+</html>

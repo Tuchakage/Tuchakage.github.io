@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 10 Games & Media</title>
+    <link rel="stylesheet" href="styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="./javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My Projects</a></li>
+        <li><a class = "active" href="blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 10 - Final Rating & Saving</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Dec 12, 2021</h5>
+
+            <h2 class = "normal">Final Rating</h2>
+            <p>So in our game so far we have the Rating System but there was no way the Player could know their overall performance in the level, that is until i created a scene that will show the overall rating the played got for the level.</p>
+            <p>I created a function called "FinalRatingCalc" that when the Final Scene is loaded it will get all the ratings of the previous mini games and it will add it all together. Depending on the total score the SetFinalRating() function will be called with an int parameter passed into it (A number between 1 and 3 will be passed into these functions).</p>
+            <p>What the SetFinalRating() function does is that it will display the amount of stars in the Final Rating Scene and it will also create save data for the level so that the player can see what rating they got in that level when they are in the main menu. </p>
+
+
+            <h2 class = "normal">Understanding How A Saving System Works </h2>
+            <p>The Saving system is something that i've always wanted to add into a game but i never really knew how to even make one, until i decided to try it out for this game.</p>
+            <p>Implementing the Saving system was pretty hard at first because i saw that you have to understand how to read and write data into files, after some research i was able to understand the process. The hardest part was how to save a dictionary into a file, because since dictionaries arent serializable i cannot just easily save them into a file like an integer or a string, but luckily i was able to find a <a href = "https://www.dotnetperls.com/convert-dictionary-string">script</a> that converts dictionarys into string. </p>
+            <p>I had to modify this script so that it could take in a parameter so that the save system knows what level they are making a save file for and what the final rating of that level is, i also had to add in a separate load function so that i choose when the save data is loaded.</p>
+            <!-- <h5 class = "normal">Feedback Checklist</h5> -->
+            <img class="img" src="images\Week 10\Saving Level Data.png" alt="">
+            <img class="img" src="images\Week 10\FinalRatingCalc() Function.png" alt="">
+            <img class="img" src="images\Week 9\Rating.png" alt="">
+            </div>
+          </div>
+    
+
+          
+        </div>
+  
+  </body>
+</html>
