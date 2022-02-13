@@ -9,6 +9,7 @@ body{
 
 }
 
+
 /* Gets rid of the Bullet points */
 /* Edit This To Edit The Black Bar */
 ul {
@@ -143,33 +144,32 @@ li {
 .leftarrow, .rightarrow {
   cursor: pointer;
   position: absolute;
-  top: 50%;
   width: auto;
-  margin-top: -22px;
   padding: 16px;
-  color: white;
+  color: black;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 25px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+  background-color: transparent;
+  border: transparent;
 }
 
 /* Position The Right Arrow to the right */
 .rightarrow {
   right: 0;
-  border-radius: 3px 0 0 3px;
+
 }
 
 /* Position the Left Arrow to the left */
 .leftarrow {
   left: 0;
-  border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
 .leftarrow:hover, .rightarrow:hover {
-  background-color: rgba(0,0,0,0.8);
+  color: rgba(0, 17, 255, 0.8);
 }
 
 .overlay {
@@ -188,6 +188,19 @@ li {
 .container:hover .overlay {
   bottom: 0;
   height: 100%;
+}
+
+/* Text For Overlay */
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
   p.normal

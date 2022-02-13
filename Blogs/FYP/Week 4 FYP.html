@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 4 FYP</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../projects.html">My Projects</a></li>
+        <li><a class = "active" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 4 - Finishing The Bow & Arrow Pt 1</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+              <h5 class = "normal">Date Created: Nov 24, 2021</h5>
+
+              <h2 class = "normal">Setting Up String For Bow!</h2>
+              <p>After doing the tasks to pick up and drop the bow and arrow it was time to get started on actually launching the arrow. To get the Bow to launch the arrow we first needed some way for the player to be able to draw back and release the string, for this we used a box collision that the string of the bow will follow.</p>
+              <p>Since the string that was already on the Bow model wont move at all since the bow is a static mesh in the project instead of a skeletal mesh (which it was with the VR expansion plugin) i had to edit the actual model in Maya to get rid of the string.</p>
+              <p>In Maya i had to also to change the inital rotation of the bow to be stand up right so that i could properly put on the cable component which is what we are using as the string instead. The reason for using the cable component in Unreal as the new string for the bow is that the cable component can follow the String collision (The Box collision component) so it actually looks like the player is drawing back the string of the bow (Look at <b>"Picking Up The Bow"</b> Image down below).</p>
+
+              <h2 class = "normal">How Pulling Back The String Works</h2>
+              <p>The way pulling back the string is setup is that i had to first make it so that the first hand that touches the bow and picks it up will be the first hand and then once the bow has been picked up you can then use your second hand to pull the string back (in this case the box collision).</p>
+              <p>When the string is grabbed with the second hand then the Event tick is enabled which will then track the location of the second hand which the string will then follow, it will also make sure that the string cannot go too far forward and too far back (Look At <b>"Tracking The Second Hand"</b> Image Below). </p>
+              <p>For the String to go back into place we created a custom event called "Shoot" that used a timeline to make the string smoothly go back into its original position and this event is called when the second hand stops holding the string.</p>
+              <p>The power at which the arrow has when its launched is determined when you get the vector length of the distance between the original location of the string and the current location of the string.</p>
+              
+              <!-- Image Slideshow box -->
+              <div class="container">
+                
+                <div class ="mySlides">
+                  <img src="..\..\images\FYP Images\Week 4\Bow with Cable as string.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Bow with Cable as string</div>
+                  </div>
+                </div>
+
+                <div class ="mySlides">
+                  <img src="..\..\images\FYP Images\Week 4\Dropping The Bow.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Dropping The Bow</div>
+                  </div>
+                </div>
+
+                <div class ="mySlides">
+                  <img src="..\..\images\FYP Images\Week 4\Picking Up The Bow.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Picking Up The Bow</div>
+                  </div>
+                </div>
+
+                <div class ="mySlides">
+                  <img src="..\..\images\FYP Images\Week 4\Putting String Back Into Place.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Putting String Back Into Place</div>
+                  </div>
+                </div>
+
+                <div class ="mySlides">
+                  <img src="..\..\images\FYP Images\Week 4\Tracking The Second Hand.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Tracking The Second Hand</div>
+                  </div>
+                </div>
+
+                <div class ="mySlides">
+                  <img src="..\..\images\FYP Images\Week 4\Updating String Location.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Updating String Location</div>
+                  </div>
+                </div>
+                
+                <!-- Left Arrow and Right Arrow for Video Slideshow -->
+                <button class="leftarrow" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="rightarrow" onclick="plusDivs(1)">&#10095;</button>
+              </div>
+            </div>
+          </div>        
+        </div>
+  
+<!-- This changes the slide numbers -->
+<script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+  
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+  
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    x[slideIndex-1].style.display = "block";  
+  }
+  </script>
+  </body>
+</html>
