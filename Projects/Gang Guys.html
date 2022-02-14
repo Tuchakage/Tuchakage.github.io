@@ -45,22 +45,9 @@
 
               <div class="container">
                 <!-- Plays the muted video as soon as the page loads up -->
-
-                <div class ="mySlides">
-                  <video src="../videos\Gang Guys.mp4" autoplay controls muted loop></video> 
-                  <a href="Projects\Donut Pack.html">
-                    <div class="text" style="top: 0;">
-                      <br>
-                      <p>Part 1</p>
-                    </div>
-                  </a>  
-                </div>
-                            <!-- Left Arrow and Right Arrow for Video Slideshow -->
-            <button class="leftarrow" style="top: 50%;" onclick="plusDivs(-1)">&#10094;</button>
-            <button class="rightarrow" style="top: 50%;" onclick="plusDivs(1)">&#10095;</button>   
+                <video src="../videos\Gang Guys.mp4" autoplay controls muted loop></video> 
               </div>
 
-            <!-- <h2 class = "normal">Hello, World!</h2> -->
             
               <h5 class = "normal"> Team Project (Team Of 3) </h5>
               <h5 class = "normal">Game Engine: Unreal Engine 4</h5>
@@ -112,25 +99,5 @@
           </div>         
         </div>
 
-  <!-- This changes the slide numbers -->
-<script>
-  var slideIndex = 1;
-  showDivs(slideIndex);
-  
-  function plusDivs(n) {
-    showDivs(slideIndex += n);
-  }
-  
-  function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    if (n > x.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = x.length}
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";  
-    }
-    x[slideIndex-1].style.display = "block";  
-  }
-  </script>
   </body>
 </html>
