@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+  }
+  
+body{
+    padding: 20px;
+    background-color: #f0e8c5;
+    margin: 0;
+
+}
+
+
+/* Gets rid of the Bullet points */
+/* Edit This To Edit The Black Bar */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /*Stops the elements of "li" from going outside of the list*/
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+  }
+
+  /*Makes Navigation bar horizontal */
+li {
+    float: left;
+  }
+  /*Makes block around the links show up (FOR TEXT)*/
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 25px;
+    text-decoration: none;
+    position: relative;
+    left: 700px;
+  }
+
+  /* When the tag "li a" that is being hovered is not active then the link should change to this colour */
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+
+  /* Depending on the page you are on it will be highlighted in the navigation bar */
+.active {
+
+	background-color:#f0e8c5;
+  color:black;
+  /* Was Used for Button (Leave here just incase you want buttons again) */
+  	/* box-shadow:inset 0px 0px 15px 3px #04AA6D;
+	background:linear-gradient(to bottom, #04AA6D 5%, #415989 100%); */
+	/* border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666; */
+}    
+  
+  /* Header/Blog Title */
+  .header {
+    padding: 30px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    /* background: white; */
+  }
+  
+  /* Create two unequal columns that floats next to each other */
+  /* Left column */
+  .leftcolumn {   
+    float: left;
+    width: 55%;
+  }
+  
+  /* Right column */
+  .rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+  }
+  
+  /* Fake image */
+  .img {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Add a card effect for articles */
+  .card {
+    position: relative;
+    left: 50%;
+
+    padding: 20px;
+    margin-top: -50px;
+
+
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+  }
+
+  /* Video Size */
+  video{
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.mySlides{
+    display:none;
+}
+
+/* Slideshow container */
+.container {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.leftarrow, .rightarrow {
+  cursor: pointer;
+  position: absolute;
+  width: auto;
+  padding: 16px;
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: transparent;
+  border: transparent;
+}
+
+/* Position The Right Arrow to the right */
+.rightarrow {
+  right: 0;
+
+}
+
+/* Position the Left Arrow to the left */
+.leftarrow {
+  left: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.leftarrow:hover, .rightarrow:hover {
+  color: rgba(0, 17, 255, 0.8);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+  opacity: 0.8;
+}
+
+.container:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+
+/* Text For Overlay */
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+  p.normal
+  {
+    font-size: 25px;
+  }
+
+  p.bold
+  {
+    font-weight: bold;
+  }
+  a.bold
+  {
+    font-weight: bold; 
+  }
+  h1.normal
+  {
+    font-size: 60px;
+    font-weight: bold;
+  }
+
+  h2.normal
+  {
+      font-size: 40px;
+      font-weight: bold;
+  }
+
+  h5.normal
+  {
+    font-weight: bold;
+  }
+
+  .icon
+  {
+    width: 64px;
+    height: 64px;
+  }
+  
+  

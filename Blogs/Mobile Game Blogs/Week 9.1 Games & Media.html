@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 9 Games & Media</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../projects.html">My Projects</a></li>
+        <li><a class = "active" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 9 - UI Update & Publishing Time!</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Dec 6, 2021</h5>
+
+            <h2 class = "normal">New Mini Game Idea!</h2>
+            <p>Me, Hassan and Shaafie were thinking to ourselves how it was strange that are team name is PackingUp, our game is named Donut pack but yet, in our game theres nothing that includes packing things up. So we were trying to think of an idea for a packing mini game which is when i remembered how there was a mini game in one of the old Mario DS games where you have to launch a cannon ball from a slingshot into the bombs that were floating down in the air.</p>
+            <p>In our version of the mini game i told them that we could be launching Donuts from a sling shot into a package for the Donut instead, Hassan and Shaafie started playing the mini game since they have the game and they agreed that we should make a new mini game based off this.</p>
+            
+            <h2 class = "normal">Starting On The Slingshot!</h2>
+            <p>I started to add in a way to drag and shoot but the problem with it was that it doesn't feel like it was coming out of a sling shot, it felt more like your shooting out a rocket.</p>
+            <p>I then stumbled upon a <a href ="https://www.youtube.com/watch?v=-E76wczofA8&ab_channel=VDOGAMES"a>Youtube tutorial</a> that was showing viewers how to make an Angry birds type sling shot, the only problem was that this was for PC. So when following the tutorial i had to adapt it from PC to touch screen and to be honest it wasn't really that hard because i just had to change the input from left clicking to the touch screen input of mobile.</p>
+            
+            <h2 class = "normal">Respawning Ball</h2>
+            <p>I made some changes to how the ball is respawned, in the video it is respawned by adding multiple ball objects and just disabling them in the editor Scene but i want the balls to be spawned by a script so i can edit how many balls will be spawned later on.</p>
+            <p>I made it so that the nextDonut variable that is already there will be set to the GameObject it is on when the game starts and then i created a new script called "SpawnDonut" which essentially just spawns the next Donut with all the components reset. So i created a new function that calls this function in the new script "SpawnDonut" and then once that function is called it will then make the band for the slingshot visible again and then the Donut that has already been launched will be destroyed.</p>
+            <!-- <h5 class = "normal">Feedback Checklist</h5> -->
+            <img class="img" src="../../images\Week 9\Slingshot At Start Gif.gif" alt="">
+            <img class="img" src="../../images\Week 9\mario game inspiration.png" alt="">
+            <img class="img" src="../../images\Week 9\New Slingshot.gif" alt="">
+            <img class="img" src="../../images\Week 9\Function That spawns in Next Donut.png" alt="">
+            <img class="img" src="../../images\Week 9\When the Enumerator is almost finished, Spawn in the new Donut.png" alt="">
+            </div>
+          </div>
+    
+
+          
+        </div>
+  
+  </body>
+</html>

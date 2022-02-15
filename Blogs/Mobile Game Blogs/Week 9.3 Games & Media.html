@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 9 Games & Media</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../projects.html">My Projects</a></li>
+        <li><a class = "active" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 9 - Reconnaissance & Donut Shooting</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Dec 6, 2021</h5>
+
+            <h2 class = "normal">The Reconnaissance Mission</h2>
+            <p>In my spare time i decided that i should play the games of the other teams in my class to help them with their Google forms and to see if there are any ideas we can steal.</p>
+            <p> I didn't really have anything to steal  but one game did have a save system that saves the games currency even if you close the game so it reminded me how in our game we should have a save system that saves rating of the levels that have been completed (Once we implemented the Level rating feature).</p>
+            
+            <h2 class = "normal">Shooting The Donut The Player Creates</h2>
+            <p>There was a problem with the Sling shot where after the first ball was shot then the 2nd ball that was spawned in will just be hanging and moving about the place which would effect the pulling and launching of the sling shot. All i had to do was in the script that spawned the Donuts i just had to reenable isKinematic after the Donut was spawned.</p>
+            <p>Next was getting the Donut that the player creates in the Sprinkles mini game into the Packing mini game. The way i wanted to do it at first was to create and save a prefab but when i did my research to see how to go about this i realised that i should go about it my way first so that i at least have the feature there and then later on i can convert it to the way i originally wanted it to be like.</p>
+            <p>The way i went about this is that when you press the Next level button on the Sprinkles mini game the Donut that was created will have a script added to it using the addComponent function that wont destroy the Donut object when it loads to the next scene.</p>
+            <p>When the Donut is loaded to the next scene which is the Packing Mini game there will be a DonutManager which is a script that will look for the Donut that was loaded into the scene. Once the DonutManager finds the Donut Object then it will change the size, position and rotation of the Donut to make it fit into the sling shot, then after that the script would destroy the components that are not needed e.g. the Icing Collision script. </p>
+            <p>Then after that the script will add all the components to the Donut that is needed for the Donut to be able to be launched from the Sling shot. Once the components have been added then some of them will need to be modified for example, the SpringJoint2D Component will need a value in the connectedBody variable and its frequency value will need to be changed, then finally we get rid of the DontDestroyOnLoad script since it has done its job.</p>
+
+            
+            <!-- <h5 class = "normal">Feedback Checklist</h5> -->
+            <img class="img" src="../../images\Week 9\DonutManager Script.png" alt="">
+
+            </div>
+          </div>
+    
+
+          
+        </div>
+  
+  </body>
+</html>
