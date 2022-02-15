@@ -80,7 +80,7 @@ li {
   /* Left column */
   .leftcolumn {   
     float: left;
-    width: 55%;
+    width: 50%;
   }
   
   /* Right column */
@@ -231,6 +231,12 @@ li {
   h5.normal
   {
     font-weight: bold;
+  }
+
+  .icon
+  {
+    width: 64px;
+    height: 64px;
   }
   
   
