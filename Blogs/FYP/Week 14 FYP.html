@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 14 FYP</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../projects.html">My Projects</a></li>
+        <li><a class = "active" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 14 - The Final Stretch</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+              <h5 class = "normal">Date Created: Apr 12, 2022</h5>
+
+              <h2 class = "normal">A Few Last Things Added......</h2>
+              <p>The deadline for the project is this week but i am able to still work on the project after the deadline to prepare for the viver (Presentation to mentor and another marker). </p>
+              <p>Since the core game mechanics were all finished i decided to just spend this week making the game more enjoyable because i felt like it was missing something and that something was special effects.</p>
+              <p>I created particle effects for when the players weapon hits the Enemy using the Niagara system of the Unreal engine and i added sound to when the weapon hits the Enemy . These 2 things were simple to add just had to add it to the end of the OnOverlapComponentFunction after applying knockback to the enemy was done. Sound for when the Enemy dies and for when the Sword blocks an Enemy attack was also added. </p>
+              <p>The final things that were done to the game before submission was i made a portal made out of particles for the lobby and for when the player beats the game, the purpose of this portal is when you walk through it then it will take you either back to the lobby or into the arena to start the game depending on where the portal is. Text explaining what each weapon can do was also added to the Lobby.</p>
+
+
+              <!-- Image Slideshow box -->
+              <div class="container">
+                
+                <div class ="mySlides">
+                  <img src="..\..\images\FYP Images\Week 14\Portal.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Portal</div>
+                  </div>
+                </div>
+
+                <div class ="mySlides">
+                  <img src="..\..\images\FYP Images\Week 14\Adding Particles And Sound.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Adding Particles And Sound</div>
+                  </div>
+                </div>
+
+                <!-- Left Arrow and Right Arrow for Video Slideshow -->
+                <button class="leftarrow" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="rightarrow" onclick="plusDivs(1)">&#10095;</button>
+              </div>
+            </div>
+          </div>        
+        </div>
+  
+<!-- This changes the slide numbers -->
+<script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+  
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+  
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    x[slideIndex-1].style.display = "block";  
+  }
+  </script>
+  </body>
+</html>

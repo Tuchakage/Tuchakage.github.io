@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 13 FYP</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../projects.html">My Projects</a></li>
+        <li><a class = "active" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 13 Small But Many Improvements</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+              <h5 class = "normal">Date Created: Apr 6, 2022</h5>
+
+              <h2 class = "normal">New Lobby!</h2>
+              <p>Since the deadline is nearing and the core mechanics have been implemented it was finally time to add proper winning and losing conditions, but before that i created a lobby where the player will first spawn in when they start the game which will take them to the arena where the combat starts when they walk through a trigger, it will also be the place the player returns to when they lose all their health or when they beat all the waves.</p>
+              <p>The player now spawns in with the PlayerStart Actor (Basically a spawnpoint for the player) but when adding this the TraceGround Event of the VR Character Animation blueprint wasnt able to access the skeletal mesh straight away which would produce an error. To fix this problem an IsValid node was added just before the animation blueprint goes into the FootIK function to make sure that the reference to the skeletal mesh has been assigned.</p>
+              <p>In the Lobby i also made it so that the player can adjust the player height of the character model so there character will be standing when they are in the Arena but this feature doesn't really work that well because the scaling of the Lobby and the arena is different.</p>
+
+              <h2 class = "normal">Small Improvements</h2>
+              <p>I also noticed how when the weapon is just lying on the ground and the Enemies touch it, they will still take damage, to solve this problem inside of the weapons C++ script that deals with the damage i added another condition where damage will only be dealt if the variable "hasBeenGrabbed" is true. This hasBeenGrabbed variable will be set to true in any WeaponBP when the weapon is picked up by the player.</p>
+              <p>There was also another problem where if you stop grabbing with the 2nd hand of a 2 handed weapon then the weapon will stay stuck on the first even if you have left go off the trigger on the left, for this i simply separated the "AttachedActor" variable to be "AttachedActorL" and "AttachedActorR".</p>
+
+              <!-- Image Slideshow box -->
+              <div class="container">
+                
+                <div class ="mySlides">
+                  <img src="..\..\images\FYP Images\Week 13\Lobby.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Lobby</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>        
+        </div>
+  
+<!-- This changes the slide numbers -->
+<script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+  
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+  
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    x[slideIndex-1].style.display = "block";  
+  }
+  </script>
+  </body>
+</html>
