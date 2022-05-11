@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 7 Narrative</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../projects.html">My Projects</a></li>
+        <li><a class = "active" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 7 - Cinematic Level Up</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+              <h5 class = "normal">Date Created: Apr 27, 2022</h5>
+
+              <h2 class = "normal">My Cinematic Skills</h2>
+              <p>I was able to finish all the cutscenes for level 1: beginning and I felt like my skills with making cinematics have improved massively, I was able to improve scenes by transitioning from one animation to another and I have started to make scenes fade in and out to make it look better. By the time i was finished with the Level 1 beginning and end storyboards the storyboards for Level 2 was complete so i immediately started working on that and was able to complete both the level 2 beginning and end scenes quite quickly.</p>
+              
+              <h2 class = "normal">Voice Acting</h2>
+              <p>The script from one of our narrative designers was pretty much done so a few of us who were voicing the characters met up inside of the university and used a quiet room in order to record voice lines for the game. In that voice acting session we were able to complete all the lines that were available with the script, only thing left to do was for the audio engineer to edit them and sort them into files.  </p>
+              
+              <h2 class = "normal">Helping With Gameplay</h2>
+              <p>Whilst waiting for the storyboard for Level 3 to be finished i decided to dip into the gameplay side of things a little bit and create a simple losing screen for when the player dies, the player will be able to restart the level or quit the game completely.</p>
+
+              <!-- Image Slideshow box -->
+              <div class="container">
+                
+                <div class ="mySlides">
+                  <img src="..\..\images\Narrative Images\Week 7\Start_Of_Level_2.gif" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Start Of Level 2</div>
+                  </div>
+                </div>
+
+                <div class ="mySlides">
+                  <img src="..\..\images\Narrative Images\Week 7\Sequencer With Voices Added.png" style="width: 100%;">
+                  <div class="overlay">
+                    <div class="text">Sequencer With Voices Added</div>
+                  </div>
+                </div>
+
+
+
+                <button class="leftarrow" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="rightarrow" onclick="plusDivs(1)">&#10095;</button>
+              </div>
+
+              </div>
+            </div>
+          </div>        
+        </div>
+  
+<!-- This changes the slide numbers -->
+<script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+  
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+  
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    x[slideIndex-1].style.display = "block";  
+  }
+  </script>
+  </body>
+</html>

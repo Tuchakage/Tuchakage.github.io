@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 8 Narrative</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../projects.html">My Projects</a></li>
+        <li><a class = "active" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 8 - Finale...</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+              <h5 class = "normal">Date Created: May 2, 2022</h5>
+
+              <h2 class = "normal">Problem Caused By Branches</h2>
+              <p>The deadline for the project was very close so all of us had to go into overdrive but there was a problem with the Ranged Enemy BP where it couldnt find its parent class which is the BasicEnemyBP. Me and the other gameplay programmers believe this had happened because of the branches because after merging into the main branch this problem would appear, to fix this one of the gameplay programmers just recreated the Ranged Enemy.</p>
+
+              <h2 class = "normal">Finishing All The Cutscenes</h2>
+              <p>Luckily i was able to keep up with the pace of the storyboard creation somewhat, whenever a new storyboard was made i would work on it straight away and eventually finished all of the storyboards resulting in all the cinematics being done. In between waiting for the storyboards i created the texture to create lightning and then imported that into Unreal to create the lightning particles for the main character which would be used for both cutscenes and gameplay.</p>
+             
+              <h2 class = "normal">Final Voice Acting Session</h2>
+              <p>The last thing to do to complete the cinematics side of things was to record all the lines, since the script was done me and a few others who were voice acting met up in Uni to record all the lines, we even managed to get a female voice from someone whos in our class but not in our team, once again the session was a success.</p>
+              <p>All that was left was for the voice lines to be edited and organised, where i would then help out the audio engineer add the voice lines into the remaining scenes that didnt have them. We were going to have sound effects in the game but there was problem with the gameplay so i had to go and help the gameplay programmers out with that as well. Since the game is big it would have taken ages to build the game so we just had to skip the sound effects for now.</p>
+              
+              <!-- Image Slideshow box -->
+              <div class ="mySlides">
+                <img src="..\..\images\Narrative Images\Week 8\Dropkick.gif" style="width: 100%;">
+                <div class="overlay">
+                  <div class="text">Dropkick</div>
+                </div>
+              </div>
+
+              </div>
+            </div>
+          </div>        
+        </div>
+  
+<!-- This changes the slide numbers -->
+<script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+  
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+  
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    x[slideIndex-1].style.display = "block";  
+  }
+  </script>
+  </body>
+</html>
