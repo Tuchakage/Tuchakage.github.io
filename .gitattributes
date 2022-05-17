@@ -1,3 +1,4 @@
 Gang[[:space:]]Guys.mp4 filter=lfs diff=lfs merge=lfs -text
 videos/Main[[:space:]]VR[[:space:]]Project[[:space:]]So[[:space:]]Far.mp4 filter=lfs diff=lfs merge=lfs -text
 videos/The[[:space:]]Last[[:space:]]Arena[[:space:]]Main[[:space:]]Features.mp4 filter=lfs diff=lfs merge=lfs -text
+*videos/RisingDust.mp4 filter=lfs diff=lfs merge=lfs -text
