@@ -14,8 +14,9 @@ p {
 
 .big-text {
     position: relative;
-    left: -300px;
-    font-size: 68px;
+    left: -13vw;
+    font-size: 3vw;
+
 }
 
 .myButton {

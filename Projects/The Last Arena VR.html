@@ -40,78 +40,42 @@
 
         <!-- Separates the Navigation Bar with everything else below -->
         <div style="padding:20px;margin-top:30px;height:1500px;">
-          <div class="leftcolumn">
-            <div class = "card">
+          <div class="container">
+            <!-- Plays the muted video as soon as the page loads up -->
+            <video src="https://github.com/Tuchakage/Tuchakage.github.io/raw/2aef8be1e9fe039a005d81e3fc8a5ebc99b3571a/videos/The%20Last%20Arena%20Main%20Features.mp4" autoplay controls muted loop></video> 
 
-              <div class="container">
-                <!-- Plays the muted video as soon as the page loads up -->
-                <video src="https://github.com/Tuchakage/Tuchakage.github.io/raw/2aef8be1e9fe039a005d81e3fc8a5ebc99b3571a/videos/The%20Last%20Arena%20Main%20Features.mp4" autoplay controls muted loop></video> 
-
-                <!-- Button -->
-                <a href="../Documents\K1917661 Final Year Game Dissertation.pdf" target="_blank"> 
-                  <button class="button-9 center" role="button" style="width: 20%;" >The Last Arena VR Report</button>
-                </a>
-
-
-
-
-              </div>
-
+            <!-- Button -->
+            <a href="../Documents\K1917661 Final Year Game Dissertation.pdf" target="_blank"> 
+              <button class="button-9 center" role="button" style="width: 20%;" >The Last Arena VR Report</button>
+            </a>
+            <h5 class = "normal"> Solo Project </h5>
+            <h5 class = "normal">Game Engine: Unreal Engine 4</h5>
+            <h5 class = "normal">Platform: VR</h5>
+            <p class = "bold">The Last Arena VR is a Single player VR Action game that will allow the player to fight with a range of different fighting styles. The player will be able to use a variety of different weapons to help them survive the waves of enemies that are out to get them in the arena. Each weapon will give the player a unique way of playing for example, the daggers will allow them to do decent damage and allow the player to escape enemies by teleporting to the dagger whilst the two handed sword gives them a good amount of damage and allows the player to block enemy attacks.</p>
+          
+          
+            <h5 class = "normal">My Contribution:</h5>
+            <p>Since this was a solo project all the programming was done by myself using the Unreal Engines blueprints mixed with a little bit of C++, all the models seen in the game were obtained from the internet.</p>
             
-              <h5 class = "normal"> Solo Project </h5>
-              <h5 class = "normal">Game Engine: Unreal Engine 4</h5>
-              <h5 class = "normal">Platform: VR</h5>
-              <p class = "bold">The Last Arena VR is a Single player VR Action game that will allow the player to fight with a range of different fighting styles. The player will be able to use a variety of different weapons to help them survive the waves of enemies that are out to get them in the arena. Each weapon will give the player a unique way of playing for example, the daggers will allow them to do decent damage and allow the player to escape enemies by teleporting to the dagger whilst the two handed sword gives them a good amount of damage and allows the player to block enemy attacks.</p>
-            
-            
-              <h5 class = "normal">My Contribution:</h5>
-              <p>Since this was a solo project all the programming was done by myself using the Unreal Engines blueprints mixed with a little bit of C++, all the models seen in the game were obtained from the internet.</p>
-              
-              <h5 class = "normal">What Did I Learn From This Project:</h5>
-              <p>The Last Arena VR was a project that I decided to create to not only improve my understanding of the Unreal Engine but to also get some experience to creating a VR game. I was able to learn what is required to create a VR game for example, one of the features that I was extremely happy implement the full body immersion for that you will need to be able to modify the Ik of the head, foot and hands, you will also need to make sure that the character model will rotate with the VR Origin (VR Headset for the player) and need to make sure it moves with it.</p>
-              <p>I was also able to find out about Blueprint interfaces and how they are important for communication between different blueprints without understanding this then it would have been extremely difficult to make the weapons be able to be picked up by the player.</p>
-              <p>I believe one of the most important things that this project made me improve on is the skill to be able research things that isn’t really on the internet and then still being able to complete that task for example, there was very little on full body immersion and even though the implementation may not be the best there was I was still able to add it into my very first VR game.</p>
-             
-              <br>
-              <h5 class = "normal"> Different Weapons & There Abilities</h2>
-                <p><b>Sword</b> – Mid Ranged, Good Damage & Can Block if you grab the hilt with your second hand </p>
-                <p><b>Dagger</b> – Short Ranged, Decent Damage & Can teleport if you press Menu button on Left VR Controller </p>
-                <p><b>Bow & Arrow</b> – Long Ranged, Decent Damage </p>
-
-              <br>
-              <h5 class = "normal"> Controls:</h2>
-                <p><b>Left Trackpad</b> – Movement </p>
-                <p><b>Right Trackpad </b> – Rotating </p>
-                <p><b>Left Trigger </b> – Grab With Left Hand </p>
-                <p><b>Right Trigger </b> – Grab With Right Hand </p>
-                <p><b>Menu Button On Left VR Controller</b> – Teleport To Dagger When Not Holding A Weapon </p>
-              <!-- <h5 class = "normal">My Contribution:</h5>
-              <p>In this project i was able to implement quite a lot of things. I was able to add in Enemy AI where they can sense the player and then chase after them using Unreal Engines Behaviour tree and EQS. I was also able to make it so that the Enemy AI can patrol around a platform whilst they haven't sensed a player yet and i made it so that once they are close enough to the player they sensed then they will punch the player which will knock the player backwards.</p>
-              <p>I added in some simple combat into our game so that each players have their own health bar and they can attack each other, once their health is 0 then they will be knocked out for a few seconds. I was also able to help my team mates out in how we were going to get the Local multiplayer split screen working.</p>
-              
-              <h5 class = "normal">What I Learned</h5>
-              <p>In this Project i was able to learn a lot of how Unreal Engine 4 works such as the features it has for AI (EQS & Behaviour Trees), how Blueprints work, how to setup character controls,etc. I also learned how important it is to have good communication with your team mates and making sure you get things done on time so you can spread the work out.</p>
-              
-              <h5 class = "normal"> The Different Obstacle Courses:</h2>
-              <p><b>Seesaw</b> –  Seesaw will tilt to the side your on resulting in you slipping off if you stay too long onto it. </p>
-              <p><b>Spinning Circles</b> – When you touch one of these it will start spinning you around, there are also poles around that if you touch you will be launched backwards.</p>
-              <p><b>Conveyor Belts</b> – When you touch these conveyor belts you will be either forced to push through it if its going against you, or you can use it to your advantage if its pushing you forward.</p>
-              <p><b>Ball Launcher</b> – You will have to try and climb up the hill whilst having giant balls being launched at you trying to knock you off.</p>
-              <p><b>Wrestling Platforms</b> – You will have to avoid the Wrestlers on these platforms otherwise they will knock you off.</p>
-              <p><b>Moving platforms</b> – Make sure you time your jumps nicely or else you will miss the platforms completely since they are moving around.</p>
-              <p><b>The Teleporter</b> – An obstacle course where you will be randomly teleported to proceed the course but you will either get a clean path or a path of mud that will slow you down.</p>
-              <p><b>Jump and Slide</b> – There are obstacles that will try to slow you down and you must jump over some and slide under the others.</p>
-              <p><b>Wall Running</b> – You will have to run and jump from wall to wall in order to complete.</p> -->
-
-  
-
-
-
-<!-- <img class="img" src="images/Brainstorming.jpg" alt="Brainstorming">
-              <img class="img" src="images/unique mechanics.jpg" alt="Unique Mechanic Ideas"> -->
+            <h5 class = "normal">What Did I Learn From This Project:</h5>
+            <p>The Last Arena VR was a project that I decided to create to not only improve my understanding of the Unreal Engine but to also get some experience to creating a VR game. I was able to learn what is required to create a VR game for example, one of the features that I was extremely happy implement the full body immersion for that you will need to be able to modify the Ik of the head, foot and hands, you will also need to make sure that the character model will rotate with the VR Origin (VR Headset for the player) and need to make sure it moves with it.</p>
+            <p>I was also able to find out about Blueprint interfaces and how they are important for communication between different blueprints without understanding this then it would have been extremely difficult to make the weapons be able to be picked up by the player.</p>
+            <p>I believe one of the most important things that this project made me improve on is the skill to be able research things that isn’t really on the internet and then still being able to complete that task for example, there was very little on full body immersion and even though the implementation may not be the best there was I was still able to add it into my very first VR game.</p>
            
-            </div>
-          </div>         
+            <br>
+            <h5 class = "normal"> Different Weapons & There Abilities</h2>
+              <p><b>Sword</b> – Mid Ranged, Good Damage & Can Block if you grab the hilt with your second hand </p>
+              <p><b>Dagger</b> – Short Ranged, Decent Damage & Can teleport if you press Menu button on Left VR Controller </p>
+              <p><b>Bow & Arrow</b> – Long Ranged, Decent Damage </p>
+
+            <br>
+            <h5 class = "normal"> Controls:</h2>
+              <p><b>Left Trackpad</b> – Movement </p>
+              <p><b>Right Trackpad </b> – Rotating </p>
+              <p><b>Left Trigger </b> – Grab With Left Hand </p>
+              <p><b>Right Trigger </b> – Grab With Right Hand </p>
+              <p><b>Menu Button On Left VR Controller</b> – Teleport To Dagger When Not Holding A Weapon </p>
+          </div>      
         </div>
 
     <!-- This changes the slide numbers -->
