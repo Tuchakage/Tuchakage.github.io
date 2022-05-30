@@ -123,15 +123,17 @@ p {
   /* Icon wont appear at first */
   .topnav .icon {
     display: none;
+    font-size: 40px;
   }
 
   /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
   @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {display: none;}
     .topnav a.icon {
-      float: right;
+      padding-left: 30vw;
+      padding-top: 1vw;
       display: block;
-      font-size: 60px;
+      font-size: 40px;
     }
   }
   
