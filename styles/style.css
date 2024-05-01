@@ -141,7 +141,7 @@ p {
     /*Edits the Hamburger icon right now*/
     .topnav a.hamburger {
       position: relative;
-      display: block;
+      display: inline;
       bottom: 5px;
       left:10px;
       /* padding-left: 30vw;
