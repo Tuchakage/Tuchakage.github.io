@@ -91,7 +91,9 @@ p {
     height: 100%;
     overflow: auto;
     z-index: 3;
-    right: 0;
+    right: 0; /*Put it all the way to the right*/
+    top:0; /* Puts it to the very top*/
+
   }
 
   .verticallink a{
@@ -135,6 +137,7 @@ p {
     .topnav
     {
       height: 50px;
+      
     }
 
     .topnav a:not(:first-child) {display: none;}
@@ -142,8 +145,10 @@ p {
     .topnav a.hamburger {
       position: relative;
       display: inline;
+      float: right;
+      right: 10px;
       bottom: 5px;
-      left:10px;
+
       /* padding-left: 30vw;
       padding-top: 1vw;
       display: block;

@@ -16,6 +16,10 @@
         <!-- <button class="active" onclick="location.href='index.html'" class="myButton" id="homebutton">Home</button>
         <button onclick="location.href='news.html'" class="myButton" id="button2">News</button> -->
 
+        <a href="javascript:void(0);" class="hamburger" onclick="dropMenu()">
+          <i class="fa fa-bars" style="font-size: 5;"></i>
+        </a>
+        
         <!-- If you click on the home button it will take you to the home page aka the "index.html" file -->
         <li class="li" id="button1"><a class="active" href="index.html">Home</a></li>
         <li class="li" id="button2"><a href="projects.html">My Projects</a></li>
@@ -29,9 +33,7 @@
         <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
         </a>
 
-        <a href="javascript:void(0);" class="hamburger" onclick="myFunction()">
-          <i class="fa fa-bars" style="font-size: 5;"></i>
-        </a>
+
 
       </ul>
 
@@ -149,7 +151,7 @@
   }
 
   //Brings down the Drop down menu (Hamburger)
-  function myFunction() {
+  function dropMenu() {
   var x = document.getElementById("myTopnav");
   var y1 = document.getElementById("button1");
   var y2 = document.getElementById("button2");
