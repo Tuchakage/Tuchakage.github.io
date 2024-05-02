@@ -82,17 +82,16 @@ p {
   /* Makes the navigation bar Vertical */
   .verticalbar{
     list-style-type: none;
-    right:auto;
     margin: 0;
     padding: 0;
-    width: 25%;
+    /*Stops the elements of "li" from going outside of the list*/
+    overflow: hidden;
     background-color: #333;
     position: fixed;
-    height: 100%;
-    overflow: auto;
+    top: 0;
+    width: 100%;
     z-index: 3;
-    right: 0; /*Put it all the way to the right*/
-    top:0; /* Puts it to the very top*/
+    height: 230px;
 
   }
 
@@ -157,8 +156,20 @@ p {
       top: 0;
       right: 0; */
     }
+
+    a.icons
+    {
+      font-size: 64px;
+      float:right;
+      /* position: relative;
+      font-size:320px;
+      float:right;
+      color:black; */
+    }
+
   }
   
+
 
 
   /* Video Size */
