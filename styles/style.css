@@ -160,15 +160,27 @@ p {
     a.icons
     {
       font-size: 64px;
-      float:right;
+      text-decoration: none;
       /* position: relative;
       font-size:320px;
       float:right;
       color:black; */
     }
 
+    .active {
+
+      background-color:#181818;
+      color:white;
+
   }
-  
+
+  .verticallink a{
+    display: block;
+    color: #ffffff;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+}
 
 
 

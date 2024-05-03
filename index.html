@@ -12,19 +12,21 @@
     
       <!-- Navigation Bar Stuff -->
       <!-- The ul tag defines an unordered (bulleted) list -->
-      <ul class="topnav" id="myTopnav">
+      <ul class="verticalbar" id="myTopnav">
         <!-- <button class="active" onclick="location.href='index.html'" class="myButton" id="homebutton">Home</button>
         <button onclick="location.href='news.html'" class="myButton" id="button2">News</button> -->
 
         <a href="javascript:void(0);" class="hamburger" onclick="dropMenu()">
-          <i class="fa fa-bars" style="font-size: 5;"></i>
+          <i class="fa fa-bars" id="hamburgicon" style="font-size: 5;"></i>
         </a>
         
+
         <!-- If you click on the home button it will take you to the home page aka the "index.html" file -->
-        <li class="li" id="button1"><a class="active" href="index.html">Home</a></li>
-        <li class="li" id="button2"><a href="projects.html">My Projects</a></li>
-        <li class="li" id="button3"><a href="blogs.html">My Blogs</a></li>
+        <li class="verticallink" id="button1"><a class="active" href="index.html">Home</a></li>
+        <li class="verticallink" id="button2"><a href="projects.html">My Projects</a></li>
+        <li class="verticallink" id="button3"><a href="blogs.html">My Blogs</a></li>
         <!-- The A tag defines a hyperlink -->
+        
         <a href="https://github.com/Tuchakage" class="icons">
           <i class="fab fa-github" ></i>  
         </a>
@@ -156,17 +158,19 @@
   var y1 = document.getElementById("button1");
   var y2 = document.getElementById("button2");
   var y3 = document.getElementById("button3");
+  var y4 = document.getElementById("hamburgicon")
   if (x.className === "topnav") {
     x.className = "verticalbar";
     y1.className = "verticallink";
     y2.className = "verticallink";
     y3.className = "verticallink";
-    
+    y4.className = "fa fa-close";
   } else {
     x.className = "topnav";
     y1.className = "li";
     y2.className = "li";
     y3.className = "li";
+    y4.className = "fa fa-bars";
   }
 }
   </script>
