@@ -270,4 +270,8 @@ video{
   font-family:"Cooper Black";
 }
 
+td{
+  /*Gap between columns */
+  padding: 0 15px;
+}
 
