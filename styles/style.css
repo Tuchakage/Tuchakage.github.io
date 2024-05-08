@@ -1,11 +1,12 @@
 body{
     text-align: center;
-    background-color: #f0e8c5;
+    background-color: #fedc47;
     margin: 0;
 }
 
 p {
     font-size: 18px;
+    font-family:"Cooper Black";
 }
 
 .normal-text{
@@ -16,6 +17,7 @@ p {
     position: relative;
     left: -12vw;
     font-size: 3vw;
+    font-family:"Cooper Black";
 
 }
 
@@ -265,6 +267,7 @@ video{
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+  font-family:"Cooper Black";
 }
 
 
