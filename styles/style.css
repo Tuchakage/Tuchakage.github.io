@@ -179,7 +179,8 @@ p{
     {
       font-size: 64px;
       text-decoration: none;
-      margin: auto;
+      position: relative;
+      right: 32%;
       /* position: relative;
       font-size:320px;
       float:right;
