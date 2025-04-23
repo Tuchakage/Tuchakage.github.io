@@ -21,7 +21,7 @@
         </a>
         
 
-        <!-- If you click on the home button it will take you to the home page aka the "index.html" file -->
+        <!-- If you click on the home button it will take you to the home page aka the "index.html" file (This is because of the href attribute)-->
         <li class="li" id="button1"><a class="active" href="index.html">Home</a></li>
         <li class="li" id="button2"><a href="projects.html">My Projects</a></li>
         <li class="li" id="button3"><a href="blogs.html">My Blogs</a></li>
@@ -30,7 +30,6 @@
         <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/" class="fab fa-linkedin icons" style="color:cornflowerblue;" ></a>
         <a href="https://github.com/Tuchakage" class="fab fa-github icons" ></a>  
   
-
 
 
 
@@ -209,6 +208,7 @@
   
   function showDivs(n) {
     var i;
+    // Get Reference to elements that have the class name "mySlides" and put them in an array
     var x = document.getElementsByClassName("mySlides");
     if (n > x.length) {slideIndex = 1}
     if (n < 1) {slideIndex = x.length}
