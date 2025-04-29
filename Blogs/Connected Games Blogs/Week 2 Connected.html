@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 2 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 2 - Starting on the Lobby!</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Jan 29, 2025</h5>
+            <!-- <h2 class = "normal">Hello, World!</h2> -->
+
+            <h2 class = "normal">Game Idea Decided!</h2>
+            <p>
+              This week we decided on a multiplayer game to create, the game will be a Coin Collecting game where teams of 2 players compete against other players in the room to collect the most coins. The max amount of teams in the game will be 5 and 2 players HAVE to be in a team, there will be 2 roles the seeker role and the observer role. The seeker will be a player who has a third person camera and there job is to collect the coins, the other role is the observer whos job is to support the seeker in 
+              collecting coins fending off the opposing teams seekers with abilities such as flick to push them back. For more details you can check out this Trello card <a href="https://trello.com/c/vTf7N3rv">here.</a>
+            </p>
+            
+            <h2 class = "normal">Creating Lobby System</h2>
+            <p>
+              With a game idea now set, it meant i could start working on the game, i decided to work on from the Ping Pong Multiplayer game 
+              i created last week since all the multiplayer stuff was already set up, the first thing i wanted to do was the main menu where once you join a room you can select 
+              a team to be on. For this week before getting onto assigning players to 
+              different teams i started off with creating and joining rooms using the Unity Canvas System as well as allowing players to input their own name and room name.
+            </p>
+
+            <p>
+              This week i focused on creating a lobby system that works with the Unity Canvas System, so i was able to implement players able to choose their own name and their 
+              username for the game, creating and joining rooms by clicking on buttons and have setup a ready button for the players. As i am continuing work on the Ping Pong multiplayer 
+              tutorial i will be focusing on maximum of 2 players 
+              joining the room and then later on will expand it for more players to join the room along with players choosing what team they want to join
+            </p>
+
+            <p>
+              For this i created a ‘MainMenuManager’ script that will deal with everything to do with the main menu such as connecting the players in the Photon 
+              Network so they can see what rooms are available to join, it will also deal with updating the UI of both the room list and the players in the actual room 
+              similar to what was done last week in a script known as ‘NetworkManager’ but with more functionality. So far this week i was able to get a working lobby where players 
+              can see rooms that were created, join them and are able to ready up. The main challenge was getting the room to appear in the room list with the Unity Canvas System.
+            </p>
+
+            <h2 class = "normal">Creating Room Cards</h2>
+
+            <p>(By cards i mean a UI Element that showcases the name of a room using the Unitys Canvas System)</p>
+
+            <p>Thanks to bananadev2s youtube video i was able to implement a Room List with the Unitys Canvas System, alot of the code to implement this 
+              feature happens inside of the OnRoomListUpdate Callback from the PUN SDK which is called whenever a 
+              player has created or left a room and it also passes in the parameter of variable type “Room Info” that can be used to gather the data of the room.</p>
+
+
+            <img src="..\..\images\Connected Games Images\Week 2\image.png" style="width: 100%;">
+
+            <p>
+              I have added the code above and the way it works is that when a room is created we store 
+              the information of the room in our own list called "createdRooms" which keeps track of the information 
+              of any room that is created and with that information we can manage what to display for the list that will showcase the different rooms that have been created.
+
+            </p>
+
+            <p>
+              For now with this code the else statement doesn’t work because i commented out the code that will update the information 
+              of the room list into the “createdRooms” list because i get an error that says <b>InvalidOperationException: Collection was modified; enumeration operation may not execute.</b> 
+              which stops the Room card being spawned in. After some research i have found out that this is because i am modifying a list during the loop but after some testing such as 
+              making the “newList” variable outside the 
+              scope of the foreach loop and then making the “createdRooms” list be equal to the “newList” outside of the foreach loop, that still doesn’t fix the problem.
+
+            </p>
+
+            <p>
+              Now that we have the information for the room, the only thing left to do was to create a prefab of what i want the room cards to look like and when 
+              they are spawned in provide them with the information i want them to display which is done with the UpdateUI() function that is called in the OnRoomListUpdate callback where it 
+              spawns in the Room card prefab and makes it a child of roomListPrefab 
+              which is an empty game object that has a vertical layout group component which is a child of the Room List game object which has the component that allows us to scroll.
+
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 2\image (1).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 2\image (2).png" style="width: 100%;">
+
+            <h2 class = "normal">Progress So Far</h2>
+            <img src="..\..\images\Connected Games Images\Week 2\ezgif.com-video-to-gif-converter.gif" style="width: 100%;">
+            <p>
+              Still a lot of work to be done such as making it so that both players can see each others name when they join the room, as you can see in the gif 
+              above they are aware there is another player that joined them (Player counter changes from 1/2 to 2/2). 
+              I have also set up the Readying up feature which so far uses Remote Procedure Calls (RPCs) to increase the amount of players that are readied up (See code below).
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 2\image (3).png" style="width: 100%;">
+
+
+            <h2 class = "normal">References</h2>
+
+            <ul>
+              <li>bananadev2. (2023, July 11). Make a ROOM LIST & Creating Rooms (Pun 2 Multiplayer FPS Tutorial E12) [Video]. YouTube. 
+                <a href="https://www.youtube.com/watch?v=_QilKZ1f5Vo">https://www.youtube.com/watch?v=_QilKZ1f5Vo </a>
+              </li>
+              
+              <li>In unity,How can I access a buttons text that is a child of an object? (n.d.). 
+                Stack Overflow. <a href="https://stackoverflow.com/questions/64261145/in-unity-how-can-i-access-a-buttons-text-that-is-a-child-of-an-object">https://stackoverflow.com/questions/64261145/in-unity-how-can-i-access-a-buttons-text-that-is-a-child-of-an-object</a>
+              </li>
+
+              <li>
+                Pun 2 - Introduction | Photon Engine. (n.d.). Fusion 2 - Fusion 2 Introduction | Photon Engine. <a href="https://doc.photonengine.com/pun/current/getting-started/pun-intro">https://doc.photonengine.com/pun/current/getting-started/pun-intro </a>
+              </li>
+
+              <li>
+                Unity - Scripting API: SceneManagement.SceneManager.LoadScene. (n.d.). 
+              Unity - Manual: Unity 6 User Manual. <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/SceneManagement.SceneManager.LoadScene.html">https://docs.unity3d.com/6000.0/Documentation/ScriptReference/SceneManagement.SceneManager.LoadScene.html</a>
+
+              </li>
+            
+            </ul>
+
+          
+
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>

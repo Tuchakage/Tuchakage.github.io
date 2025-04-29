@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 6 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 6 - Improving Teams & Testing</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Feb 26, 2025</h5>
+
+
+            <h2 class = "normal">Whats happened this week?</h2>
+
+            <ul>
+              <li>Improved Team Counter (Variable that keeps track of how many players are in a team) so that it goes down when a player leaves</li>
+              <li>Fixing error where the Unity Editor and Development build couldn’t see the same rooms</li>
+              <li>Created Test Reports to keep track of tests</li>
+              <li>Fixed issue where when a player was already in a team leaves the room and joins back, they are instantly put into the same team</li>
+              <li>Created enumeration for teams (Unassigned ,Red, Blue, Yellow, Green, Purple)</li>
+            </ul>
+
+
+            
+            <p>
+              This week was filled with fixing errors and testing, i decided to create a test report to 
+              help me keep track of any problems and tests all in one document, i found this to be a massive help since i could write 
+              down my findings or anything i want and look back on it another day or when im looking at it i realise 
+              something, <a href="https://1drv.ms/b/c/5556daf35dadc3a8/EbpArzaKb0lDsXvE_lJs46gBbqJH-TVW6VhKj8225xmKpA?e=5Dbprd">here is the link to the test report for week 6.</a> 
+              For some reason during testing out different scenarios <b>(Check Operation Pet Week 6 Test Report)</b>, the Unity editor version of the 
+              project and my development build version couldn’t see the 
+              same room as each other but then when i opened up another exe development build of the game, the 2 development builds were able to see each others room.
+            </p>
+
+            <p>
+              Luckily in the OnConnectedToMaster() puncallback i had a Debug Log that prints out what region the 
+              Photon Network connected to which made me want to know what region the Development builds were connecting too.
+            </p>
+
+            <p>
+              I checked by adding text on the main menu when the game starts and when the game started it 
+              said the region was in Russia????? After checking <a href="https://doc.photonengine.com/pun/current/getting-started/initial-setup">PUN 2 initial setup documentation</a> it stated 
+              “<i>Starting from PUN v2.17, the "Dev Region" is only used in Unity Editor and in "Development" builds, when you use PhotonNetwork.ConnectUsingSettings() to connect. You can disable the "Dev Region" in Unity Editor and "Development Build" by simply deleting the value.</i>” 
+              so i unchecked development build in the 
+              Unitys build settings and that solved the problem.
+            </p>
+
+            <p>
+              The buffer RPC call from the MoveCardToTeam() function (<a href="..\..\Blogs\Connected Games Blogs\Week 5 Connected.html">explained last in week 5</a>) was causing all sorts of problems such as making the 
+              PUN server slower and then even causing an error that said “SendBufferFull”, this meant i had to find another way to call this function. 
+              Instead of having MoveCardToTeam() be called via RPC i instead added the function to the PlayerPropertiesUpdate() callback so that when the player moves 
+              teams then player cards will be moved for all players.
+            </p>
+
+            <p>
+              This works because the changing teams means changing the player property so when that is done the PlayerPropertiesUpdate() is triggered 
+              for every player telling them the property that has been updated. This also meant i needed to modify the MoveCardToTeam() function to have a parameter that takes in the team that player has joined, 
+              for that i created a function called GetTeamName() where it will go into the player property of the target player and then return it.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 6\image.png" style="width: 100%;">
+
+            <p>
+              Now with that added this means that every player knows where the player card for the player that is moving teams should go.
+            </p>
+
+            <h2 class = "normal">Number of players per team stored in Room Property</h2>
+
+            <p>
+              Since the amount of players per team will need to be kept an eye on for the duration of the game session i decided to put the 
+              Room Custom Property to use and created 3 functions, IncreaseTeamCount(), Decrease TeamCount() and GetTeamCount() Functions.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 6\image (1).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 6\image (2).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 6\image (3).png" style="width: 100%;">
+
+            <p>
+              For now the function only contains the switch case for the red team but it will get the current value of the team with the GetTeamCount() 
+              function which just returns the value of the team count that is stored in the Room Custom Property depending on the team. Then once its got that value, 
+              it will either increase it or decrease it by 1 and then a hashtable will be created and sent to the Photon Servers with SetCustomProperties() function.
+              
+            </p>
+
+            <p>
+              Another big issue that came up was when the player that was in a team joined back into the room, they 
+              would instantly join the team they were in, for this i just made a JoinUnassigned() function button similar to the JoinRedTeam() function but 
+              before adding the player to the Unassigned team it will check if it was previously on a different team and then decrease it from there using the DecreaseTeamCount() 
+              function. Then the JoinUnassigned() function is called as soon as the leave button is pressed before PhotonNetwork.LeaveRoom is called, before i had it called after and 
+              it wasn’t registering properly, doing it
+               before fixed the issue most likely because the SetCustomPropertys() didn’t have enough time to set the property for the room.
+            </p>
+
+            <h2 class = "normal">New way of adding Players to team()</h2>
+
+            <p>
+              I also created a function called AddPlayerToTeam() which simply creates a hashtable and sends it to the 
+              PhotonNetwork but i thought to make this a function since it is used quite alot and it also meant that for the 2nd parameter of the IncreaseTeamCount() 
+              function where it needs a value of the teams enum passed through i could just call the AddPlayerToTeam() function  to make the code alot cleaner.
+            </p>
+
+            
+
+            <img src="..\..\images\Connected Games Images\Week 6\image (4).png" style="width: 100%;">
+
+            <h2 class = "normal">References</h2>
+
+            <ul>
+             <li>Enumerations - Unity Learn [online], (no date). Unity Learn. [Viewed 4 March 2025]. Available from: <a href="https://learn.unity.com/tutorial/enumerations">https://learn.unity.com/tutorial/enumerations</a></li>
+             <li>Photon Unity Networking 2: IInRoomCallbacks Interface Reference [online], (no date). Multiplayer Game Development Made Easy | Photon Engine. [Viewed 1 March 2025]. Available from: <a href="https://doc-api.photonengine.com/en/pun/current/interface_photon_1_1_realtime_1_1_i_in_room_callbacks.html">https://doc-api.photonengine.com/en/pun/current/interface_photon_1_1_realtime_1_1_i_in_room_callbacks.html</a></li>
+             <li>[PUN2[ Only one client changes value [online], (no date). Unity Discussions. [Viewed 26 February 2025]. Available from: <a href="https://discussions.unity.com/t/pun2-only-one-client-changes-value/759869/2">https://discussions.unity.com/t/pun2-only-one-client-changes-value/759869/2</a></li>
+             <li>Pun 2 - Setup And Connect | Photon Engine [online], (no date). Fusion 2 - Fusion 2 Introduction | Photon Engine. [Viewed 1 March 2025]. Available from: <a href="https://doc.photonengine.com/pun/current/getting-started/initial-setup">https://doc.photonengine.com/pun/current/getting-started/initial-setup</a></li>
+            </ul>
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>

@@ -9,10 +9,9 @@ body{
 
 }
 
-
 /* Gets rid of the Bullet points */
 /* Edit This To Edit The Black Bar */
-ul {
+ul.bar {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -26,12 +25,14 @@ ul {
     z-index: 3;
   }
 
-  /*Makes Navigation bar horizontal */
+
+  
 li {
-    float: left;
+
   }
   /*Makes block around the links show up (FOR TEXT)*/
-  li a {
+  li a.nav {
+    float: left; /*Makes Navigation bar horizontal (Was originally only done for all li tags*/
     display: block;
     color: white;
     text-align: center;
@@ -42,8 +43,17 @@ li {
     left: 700px;
   }
 
-  /* When the tag "li a" that is being hovered is not active then the link should change to this colour */
-  li a:hover:not(.active) {
+
+
+/*Any link in a list apply this*/
+  li a{
+    color:blue;
+    font-weight: bold;
+
+  }
+
+  /* When the tag "li a" that is being hovered is not active then the link should change to this colour BUT is the nav class*/
+  li a:hover:not(.active).nav {
     background-color: #111;
   }
 
@@ -203,6 +213,8 @@ li {
   text-align: center;
 }
 
+
+
   p.normal
   {
     font-size: 25px;
@@ -212,6 +224,13 @@ li {
   {
     font-weight: bold;
   }
+
+  ul.a{
+    color:blue;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
   a.bold
   {
     font-weight: bold; 

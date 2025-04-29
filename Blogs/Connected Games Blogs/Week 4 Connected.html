@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 4 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 4 - Removing Room From List</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Feb 19, 2025</h5>
+            <!-- <h2 class = "normal">Hello, World!</h2> -->
+
+            <h2 class = "normal">Whats happened this week?</h2>
+
+            <ul>
+              <li>When a room is closed then it is removed from the room list but error still appears</li>
+              <li>When joining a room fails, bring back everything that gets disabled</li>
+            </ul>
+
+
+            
+            <p>
+              This week was an extremely busy week so i wasnt able to work on the project as much but even 
+              so i was able to fix a big problem in my lobby system which is when a room is created and is then closed because there 
+              is no players in it, the room card still appears. I thought the issue was because of the error 
+              <b>“InvalidOperationException: Collection was modified; enumeration operation may not execute” </b> that i mentioned in <a href="..\..\Blogs\Connected Games Blogs\Week 2 Connected .html">Week 2</a>  
+              which is an error that is thrown out when i try to modify a list whilst i 
+              am looping through that list but after some debugging that line of code that was causing the error was never the issue.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 4\image (5).png" style="width: 100%;">
+
+            <p>
+              In the screenshot above i am showcasing the code that was causing the error meaning that the room card would stay on the 
+              screen but this code doesn’t actually remove the UI element, i was able to realise this after looking at the Asteroid Demos code to see how they handled 
+              things and broke it down to understand why it worked the way it did. I realised that i never actually destroy the room card game Object so to solve the problem 
+              that has been there for a while i simply created a function called ClearRoomListView() that would look at all the room card game objects that is a child of the game 
+              object assigned to the roomListParent game object 
+              (Game Object that puts the room cards in a vertical layout group) and it will destroy all the children of that game object.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 4\image.png" style="width: 100%;">
+
+            <p>
+              I also encountered an issue once where for some reason joining the room failed and the UI for creating the room and the input fields 
+              stayed disappeared, this is when i remembered during a lecture the OnJoinRoomFailed PUN callback so i added that along with code to bring the UI back and to reset the 
+              joiningRoom variable (Which hasn’t been used but is there for now to locally store whether i have joined a room or not).
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 4\image (1).png" style="width: 100%;">
+            
+            <h2 class = "normal">Progress So Far</h2>
+
+            <img src="..\..\images\Connected Games Images\Week 4\Week 4.gif" style="width: 100%;">
+
+
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>

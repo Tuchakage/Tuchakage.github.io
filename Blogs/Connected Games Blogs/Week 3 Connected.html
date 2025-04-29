@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 3 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 3 - Players can see each other!</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Feb 05, 2025</h5>
+            <!-- <h2 class = "normal">Hello, World!</h2> -->
+
+            <h2 class = "normal">Whats happened this week?</h2>
+            <ul>
+              <li>Player Username locally saved to computer </li>
+              <li>Players can see each others player cards when they join a room</li>
+              <li>Players can now see when each other are readied up or not</li>
+              <li>Leave Room button added so Players can leave the room</li>
+              <li>UI Scales depending on screen size</li>
+              <li>Once players are ready they both load into the level</li>
+            </ul>
+            
+            <p>
+              This week there has been a good learning experience for me as i have learned more about the callbacks of PUN and learned about Layout groups in Unity and more. 
+              Good progress in the lobby system have also been made, with new features and adjustment to code to improve the lobby system such as, when a returning player opens up the 
+              game the username they typed in last session will be saved onto the PC locally using PlayerPrefs. Players are also able to see each others username when they are in the 
+              same room using a Player Card prefab i created that is spawned when a player joins a room and they are able to see 
+              each others ready up status which is indicated by a green circle, this is thanks to the photons Custom Properties which i will get into more detail later.
+            </p>
+            
+            <h2 class = "normal">Saving Usernames</h2>
+            <p>
+              Whilst testing out the Multiplayer functionality of the game i found myself having to type in my username to create or join a room since i 
+              changed the code so that you can only do these tasks if there is something in the Unity Input field so that is when i found out how to use Unitys 
+              Player Prefs which allows values to be stored onto the computer locally so that when the game is launched up again, it will remember the value instead of 
+              resetting it, Unity Player Prefs stores information in a 
+              < key, value > pairing so in order to get or save a value you will need to get the key which basically
+              helps Unity to identify where the value is stored.
+            </p>
+
+
+
+            <p>
+              I created a SavePlayerName script which is attached to the Input Field for the players username gameobject. Saving the username 
+              is done in a SetPlayerName() function which is public and is called everytime the player types into the name field in the main menu, 
+              it will not only save what was typed in into the 
+              Photon Networks NickName variable but it will also save it to the PlayerPrefs SetString() function using the key “Playername” which is a constant string.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 3\Set Player Names Code.png" style="width: 100%;">
+
+            <p>
+              Once the game is closed and reopened then in the Start() function the game will check if in the PlayerPrefs class the key 
+              “playerNamePrefKey” exists and if it does then the value in that key 
+              (which will be the username) will automatically show up on the username input field and will be the Nickname of the player across the Photon Network.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 3\image.png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 3\Showing Saving Player Names.gif" style="width: 100%;">
+
+            <h2 class = "normal">Players seeing each other in a room</h2>
+
+            <p>
+              The main goal of this week was making it so that both players can see each other in a room before they start the game. I was able to 
+              achieve this by analysing the code for the Asteroids demo which is imported from the PUN SDK and thats where
+               i discovered more features of Photon such as Custom Properties and even more Callbacks which i then looked into further to see how i can use them.
+
+            </p>
+
+            <h2 class = "normal">Player Card Prefab</h2>
+            <p>
+              I created a playerCardPrefab which is a prefab that just contains the text UI gameObject that will 
+              display the username of the player and as a child of that gameObject there is a green circle image which will indicate whether the 
+              player is ready to start the game or not. To go with this prefab i created a script called “PlayerCardEntry” which purpose is to change the information of 
+              the playerCard Prefab specifically through the Init() function which is called on the OnJoinedRoom() callback and the OnPlayerEnteredRoom callback.
+            </p>
+
+
+            <img src="..\..\images\Connected Games Images\Week 3\image (1).png" style="width: 100%;">
+
+            <h2 class = "normal">First use Of Photons Custom Properties</h2>
+
+            <p>
+              I needed a way for each player to know whether they are ready for the game to start, which can be set 
+              with the Ready Up button. I was originally going to do it using the OnPhotonSerializeView() callback which synchronizes 
+              variables of the supported types that you have set to synchronize across the network but then i discovered Photons Players 
+              Custom Properties features. Custom Properties are hashtables that are synced across the network in a key-value pairing 
+              which are stored in each individual player (Or in each room) this means i only need to get reference to the other Players and i am able to get the information i need.
+            </p>
+
+            <p>
+              I created a public ReadyUp() function that is called when the ready up button is 
+              pressed it will reverse the boolean variable “isPlayerReady” and then once it has done that, it will create a 
+              hashtable with the key “Player Ready” and the value of “isPlayerReady” and then the SetCustomProperties() function is 
+              called passing in the hashtable and this synchronizes the Custom Properties to the network 
+              so now everyone in the Room can see if this player is ready or not.
+
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 3\image (2).png" style="width: 100%;">
+
+            <h2 class = "normal">Spawning In Player Cards</h2>
+            <p>
+              The way spawning the player cards works is first because of the OnJoinedRoom() Callback which runs 
+              whenever a player has joined a room. When a player joins a room a for each loop will begin where for each player 
+              that is in the room, the playerCardPrefab will be spawned in. 
+              Thanks to the variable of type Player from PUN we are able to get the information of each player (Such as the actor number, the players Nickname, etc).
+            </p>
+
+            <p>
+              After the player card is spawned in then it will go into that Player Cards 
+              "PlayerCardEntry" script and call the Init() function passing in the parameters for the players actor 
+              number and the player name that has been registered to the Photon Network. We then use the TryGetValue() function since the Custom Property uses a 
+              key-value pairing, if the game successfully finds the key “Player Ready” then it will put the value of that key into the isPlayerReady variable which is an 
+              object type variable. Now that we have the value of whether the player is ready or not, we once again go into our Player cards “PlayerCardEntry” script and we 
+              call the SetReadyStatus() function (converting our isPlayerReady to a boolean) which simply enables the green ready circle for the player 
+              card and then finally the player card is added to a list with the actor number being used as the key so we know who the card belongs to.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 3\image (3).png" style="width: 100%;">
+
+            <p>
+              The Player Card being spawned in for the OnPlayerEnteredRoom() function works differently because this
+               callback is called when you are already in the room and a new player joins, so there is no need to check if 
+              there are any existing players in the room, all that needs to be done is to spawn in the Player card of the new player and pass in the actor number and username.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 3\image (4).png" style="width: 100%;">
+ 
+
+            <h2 class = "normal">Progress So Far</h2>
+            <img src="..\..\images\Connected Games Images\Week 3\Week 3 Progress So Far.gif" style="width: 100%;">
+
+
+
+            <h2 class = "normal">References</h2>
+
+            <ul>
+              <li>Designing UI for Multiple Resolutions | Unity UI | 1.0.0 [online], (no date). Unity - Manual: Unity 6.1 User Manual. [Viewed 8 February 2025]. Available from: 
+                <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/HOWTO-UIMultiResolution.html#:~:text=In%20the%20Canvas%20Scaler%20component,resolution%20to%20use%20as%20reference.">https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/HOWTO-UIMultiResolution.html#:~:text=In%20the%20Canvas%20Scaler%20component,resolution%20to%20use%20as%20reference.
+                </a>
+                </li>
+
+              <li>
+                Gamedevtricks, (2024). Hash Tables in Unity C# Explained for Beginners [online]. YouTube. [Viewed 8 February 2025]. Available from: <a href="https://www.youtube.com/watch?v=qtlt_8GPmPk">https://www.youtube.com/watch?v=qtlt_8GPmPk</a>
+              </li>
+
+              <li>
+                Pun 2 - 2 - Lobby UI | Photon Engine [online], (no date). Fusion 2 - Fusion 2 Introduction | Photon Engine. [Viewed 2 February 2025]. Available from: 
+                <a href="https://doc.photonengine.com/pun/current/demos-and-tutorials/pun-basics-tutorial/lobby-ui">https://doc.photonengine.com/pun/current/demos-and-tutorials/pun-basics-tutorial/lobby-ui
+                </a>
+                </li>
+
+              <li>
+                Pun 2 - 4 - Game Manager & Levels | Photon Engine [online], (no date). Fusion 2 - Fusion 2 Introduction | Photon Engine. [Viewed 6 February 2025]. Available from: 
+                <a href="https://doc.photonengine.com/pun/current/demos-and-tutorials/pun-basics-tutorial/gamemanager-levels">
+                  https://doc.photonengine.com/pun/current/demos-and-tutorials/pun-basics-tutorial/gamemanager-levels
+                </a>
+              </li>
+
+              <li>  
+                PUN 2 Getting and Setting Custom Properties [online], (no date). Stack Overflow. [Viewed 8 February 2025]. 
+                <a>
+                  https://stackoverflow.com/questions/59525468/pun-2-getting-and-setting-custom-properties
+                </a>
+
+              </li>
+              
+              <li>
+                Tarodev, (2021). How to use Layout Groups in Unity [online]. YouTube. [Viewed 10 February 2025]. Available from:  <a>https://www.youtube.com/watch?v=ouXCjFcfNfA</a>
+              </li>
+
+              <li>
+                VionixStudio, (2022). Scalable Unity UI Tutorial | Make UI Scalable for different screens and Resolutions [online]. YouTube. [Viewed 10 February 2025]. Available from:  
+                <a href="https://www.youtube.com/watch?v=08S1VGL9afg">https://www.youtube.com/watch?v=08S1VGL9afg</a>
+              </li>
+            </ul>
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 5 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 5 - The Start of joining a team!</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Feb 20, 2025</h5>
+
+
+            <h2 class = "normal">Whats happened this week?</h2>
+
+            <ul>
+              <li>Fixed issue where modifying a list in a for each loop would throw out the  error <b>InvalidOperationException: Collection was modified; enumeration operation may not execute.</b> but now this code has been removed because i switched from using a list to a dictionary for the local Room List</li>
+              <li>Fixed issue where only 1 room would display and when a new room was created it would overwrite the first one</li>
+              <li>Added a refresh button</li>
+              <li>For the local Room List switched from using a list to using a dictionary</li>
+              <li>Changed from Ping Pong Tutorial project to main project and setup Github for our team to use</li>
+              <li>Created Team Manager</li>
+            </ul>
+
+
+            
+            <p>
+              This week i was finally able to fix the <b>InvalidOperationException: Collection was modified; enumeration operation may not execute.</b> error 
+              from <a href="..\..\Blogs\Connected Games Blogs\Week 2 Connected .html">Week 2</a> finally thanks to a Unity forum post by user T.A.G where they had a similar problem and someone advised them to copy the list to an 
+              array with the .ToArray() function, when i tried it for myself the error was no longer there.
+
+
+            </p>
+
+            <h2 class = "normal">Having Multiple Rooms show up in List</h2>
+
+            <p>
+              I realised that not once through implementing the lobby system i have checked whether multiple rooms can be 
+              displayed and after testing i found out that the rooms were overwriting each other. During my testing i noticed that when 
+              i create 2 rooms i am only able to see the 2nd room in the list after i join a room and then leave the room, that is when i noticed in the Console window 
+              of the Unity Editor it prints out the same lines as if the player has just joined the lobby so i created a refresh button to do that and still nothing.
+            </p>
+
+            <p>
+              I went to have a look at the Asteroid example code again to see how they implemented the 
+              room list and they use dictionaries instead of lists to store the different rooms in a list, which i decided to do 
+              for my own code as well because i like the key-value pairs of a dictionary if i ever needed to get a specific item all i would need to do is get the 
+              key which is the room name, 
+              i also mimicked the name for the dictionary vairable and instead of calling it “createdRooms” i called it “cachedRoomList” which made more sense.
+              
+            </p>
+
+            
+
+            <img src="..\..\images\Connected Games Images\Week 5\image (2).png" style="width: 100%;">
+
+            <p>
+              In the screenshot above i am showcasing the code that was causing the error meaning that the room card would stay on the 
+              screen but this code doesn’t actually remove the UI element, i was able to realise this after looking at the Asteroid Demos code to see how they handled 
+              things and broke it down to understand why it worked the way it did. I realised that i never actually destroy the room card game Object so to solve the problem 
+              that has been there for a while i simply created a function called ClearRoomListView() that would look at all the room card game objects that is a child of the game 
+              object assigned to the roomListParent game object 
+              (Game Object that puts the room cards in a vertical layout group) and it will destroy all the children of that game object.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 4\image.png" style="width: 100%;">
+
+            <p>
+              I created a function called UpdateCachedRoomList() which takes in a variable of type &ltList&gtRoomInfo, this function does t
+                he same thing as its list counterpart where if the room is closed then it will remove the room from the list. BUT the difference about the way the Asteroids example handled this is that they not only had a way to remove and update the cachedRoomList but they also added added it during the for each loop that checks through all the rooms in the roomList provided by the Pun Callback OnRoomListUpdate() which is something that i didn’t have. This meant that the reason the card was never being spawned in was because it was never in my cachedRoomList so the function to spawn in the room card never knew that the room even existed, after converting my code 
+                from type list to type Dictionary and making sure the room is 
+                added to the “cachedRoomList” dictionary multiple rooms can now be shown on the main menu.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 5\Main Menu Room List Working.gif" style="width: 100%;">
+
+            <h2 class = "normal">Onto the next Level!</h2>
+
+            <p>
+              Now that the basic multiplayer lobby system is done! And now that the Designers have decided on a theme for our game, 
+              which is a game where the seeker is a pet and the observer is a wizard who owns and the pet has to collect their own pet food with the wizard supporting them.
+            </p>
+
+            <p>
+              It is time to make a Github Repositry that the whole team can access and create their own branches to 
+              work on their part of the project. The next part for me is to implement players being able to join a team in the main menu and then that transfers into the main game, 
+              to start this off i first created a TeamManager script which will hold all the functionalities for assigned players to join teams.
+            </p>
+
+            <h2 class = "normal">Joining a team</h2>
+
+            <p>
+              To keep track of what team each player is on i am using PUN 2s Player Custom Property feature which players can simply 
+              set the team they want to join by simply pressing the 
+              button so for example right now you can only join the red team so when the red team button is pressed a function called JoinRedTeam() is called.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 5\image.png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 5\image (1).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 5\image (3).png" style="width: 100%;">
+
+            <p>
+              What this function does is that it will first call the <b>CheckTeam()</b> function which will make sure that the player isn’t 
+              already part of that team, then as per the Designers request each team must have 2 players so we check if there is 2 players on the team already, 
+              if there is then we return. If there isn’t 2 players or more then the <b>IncreaseTeam()</b> function will be called which is a function that will increase a variable by 
+              1 called “redTeamCount” that keeps track of the 
+              amount of players in each team and then if you are not the master client then the RPC (Remote procedure Call) will be called to only the master client.
+            </p>
+
+            <p>
+              The reason for it only being called to the master client is because of the OnPhotonSerializeView() callback which allows variables to be synced 
+              across the network but in order to do that yourself you must be the owner of the object (In this case owner of the team manager, which we are not because it wasn’t 
+              instantiated through PhotonNetwork.Instantiate). 
+              Once the master client receives this call and calls the function then the “redTeamCount” variable will be increased for everyone.
+            </p>
+
+            <p>
+              Back to talking about the JoinRedTeam() Function, then the Custom Properties for the player will be set by creating the
+               hash table giving it the key of “Team Name” and passing in the value of the string which is “Red Team” and then the SetCustomProperty() function sends 
+               that to the PUN server. 
+              Then finally the MoveCardToTeam() function is called which moves the player card to be under the team icon.
+            </p>
+
+            <h2 class = "normal">Moving Player Cards To Correct Team</h2>
+            <img src="..\..\images\Connected Games Images\Week 5\image (4).png" style="width: 100%;">
+            
+            <p>
+              Unity needs to find where the player cards need to go so for the MoveCardToTeam() 
+              function it will take a parameter for both the team it needs to be moved under and takes in the id of the player card who is going to be moved.
+            </p>
+
+            <p>
+              A switch case statement is used to check what team the player is trying to join and with that information it will then try to find 
+              the transform of the game object that the player will become a child off and keep that reference in a variable called “cardArray”, 
+              so for joining red team the program will look for a game object called “Red Team” and keep reference to the transform of it.
+            </p>
+
+            <p>
+              After that then the program will look for every game object that has the tag “Player Card” and store it in a game object array called “cardArray”,
+               if the array has at least one object then it will check through the array and it will first check the owner id of the player card and it will check the local id of 
+               the player and 
+              if they match then it will set the player card as a child of the game object stored in the “TeamGroupList” variable and the scale will be adjusted.    
+            </p>
+
+            <p>
+              Then finally the RPC is called for all the other 
+              players even if they joined after this call has already happened since it is buffered (that is the effect of RPCTarget.OthersBuffered)
+            </p>
+
+
+
+            <h2 class = "normal">Progress So Far</h2>
+
+            <img src="..\..\images\Connected Games Images\Week 5\Week 5 So Far.gif" style="width: 100%;">
+
+            <h2 class = "normal">References</h2>
+
+            <ul>
+              <li>Getting my PlayerID | Photon Engine [online], (no date). Photon Engine Support Forum | Photon Engine. [Viewed 23 February 2025]. Available from: <a href="https://forum.photonengine.com/discussion/18159/getting-my-playerid">https://forum.photonengine.com/discussion/18159/getting-my-playerid</a></li>
+              <li>How to get player name from OwnerActorNr | PUN2 [online], (no date). Stack Overflow. [Viewed 23 February 2025]. Available from: <a href="https://stackoverflow.com/questions/60585709/how-to-get-player-name-from-owneractornr-pun2#:~:text=You%20can%20use%20PhotonNetwork.,It%20will%20return%20the%20player%20.">https://stackoverflow.com/questions/60585709/how-to-get-player-name-from-owneractornr-pun2#:~:text=You%20can%20use%20PhotonNetwork.,It%20will%20return%20the%20player%20.</a></li>
+              <li>How to iterate over a dictionary? [online], (no date). Stack Overflow. [Viewed 23 February 2025]. Available from: <a href="https://stackoverflow.com/questions/141088/how-to-iterate-over-a-dictionary">https://stackoverflow.com/questions/141088/how-to-iterate-over-a-dictionary</a></li>
+              <li>InvalidOperationException: Collection was modified; enumeration operation may not execute. [online], (no date). Unity Discussions. [Viewed 21 February 2025]. Available from: <a href="https://discussions.unity.com/t/invalidoperationexception-collection-was-modified-enumeration-operation-may-not-execute/541294/5">https://discussions.unity.com/t/invalidoperationexception-collection-was-modified-enumeration-operation-may-not-execute/541294/5</a></li>
+              <li>Sruthy, (2025). C# List And Dictionary – Tutorial With Code Examples [online]. [Viewed 21 February 2025]. Available from: <a href="https://www.softwaretestinghelp.com/c-sharp/csharp-list-and-dictionary/">https://www.softwaretestinghelp.com/c-sharp/csharp-list-and-dictionary/</a></li>
+            </ul>
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>
