@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 7 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 7 - Database Study!</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Mar 06, 2025</h5>
+
+
+            <h2 class = "normal">Whats happened this week?</h2>
+
+            <ul>
+              <li>Thinking of ways to improve my planning when it comes to Programming (Using word documents and Flow Charts)</li>
+              <li>Created a flowchart for a function that will check if teams are ready to start the game <a href="https://trello.com/1/cards/67acb3a85d2413dd826307ef/attachments/67d088755608d302219b6bda/download/CheckingReadyTeams().png">https://trello.com/1/cards/67acb3a85d2413dd826307ef/attachments/67d088755608d302219b6bda/download/CheckingReadyTeams().png</a></li>
+              <li>Attempted Account Creation</li>
+              <li>Amount Of Players in a team in the room can be seen</li>
+              <li>When Player leaves the game the team custom player property is set to null</li>
+            </ul>
+
+            <h3 style="color: blue;" class = "normal"><a href="https://1drv.ms/b/c/5556daf35dadc3a8/Ecr9Gq5y8T9CpmwMtH9QAdoBUnPyBwwL8qszVh8YvHHSlQ?e=onRvV7">Week 7 Test Report</a></h2>
+
+            
+            <p>
+              This week has helped me realise the importance of documenting and planning when it comes to programming for example, i was thinking of ways to 
+              implement a function that checks if every team is ready and i decided to create a 
+              flowchart for it and it massively helped. Operation Pet (The name of our game now) now is able to load into a 
+              level after checking if all teams
+            </p>
+
+            <h2 class = "normal">Checking if every Team is ready</h2>
+
+            <p>
+              In order to start the game every player needs to be readied up and not only that but teams MUST have 2 players, a 
+              one person team is not acceptable in this game. To implement this 
+              into the game i created a flowchart to help me visualise how the code is actually going to work.
+            </p>
+
+
+            <img src="..\..\images\Connected Games Images\Week 7\image.png" style="display: block; margin-left: auto;  margin-right: auto; width: 50%; text-align: center;">
+
+
+
+            <p>
+              How this function will basically work is that it will check through all the possible teams that players
+               can join and it will check how many players are in each of them. If there are teams with no players then we will ignore those teams, 
+               if there are teams with 2 players then we will increase the integer variable 
+              “readyTeamCount” by 1 and if there is only 1 player in the team or somehow more than 2, then we will return false which means that teams are not ready.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 7\image (1).png" style="width: 100%;">
+
+            <p>
+              Here is the function i created from that flow chart, i made some adjustments so that it will first 
+              check if there are any players in the Unassigned Team (Meaning they haven’t joined a team yet) then the game will not start.
+            </p>
+
+            <p>
+              This function is called can be called at multiple times in the main menu, once in the OnPlayerPropertyUpdate() Photon callback so that 
+              when everyone is ready after pressing the ready button (Which will call the OnPlayerPropertyUpdate callback) then the 
+              game will just start. It is called in the StartGame() function just to do a final check that all teams and players are ready before starting the game. 
+            </p>
+
+            <p>Finally it is also called in the OnPlayerLeftRoom() Photon callback, the reason for putting it here is so that say that there are 2 teams 
+              who are readied up but the game can’t start because there is a 5th player in the game, 
+              as soon as the 5th player leaves then the game is able to start, instead of having players having to reapply there ready status to start the game.
+            </p>
+
+
+            <img src="..\..\images\Connected Games Images\Week 7\Week 7 Showcasing Teams.gif" style="width: 100%;">
+
+            <h2 class = "normal">Database Understanding & Connecting Unity to Internet</h2>
+
+            <p>
+              We are planning to have a login system in our game so i decided to go through the tutorial created by our 
+              Professor Vasilis to get a basic understanding on how databases are handled in Unity, this also includes how to connect Unity to the internet to
+               gather information on the weather 
+              and display it on Unity using the <a href="https://openweathermap.org/api">weather API</a>. A local server on my PC was used to store my database thanks to this application called <a href="https://www.apachefriends.org/download.html">xampp control panel</a>.
+            </p>
+
+            <h3 class = "normal">Getting info from Internet</h3>
+            <img src="..\..\images\Connected Games Images\Week 7\image (2).png" style="width: 100%;">
+
+            <p>
+              The key to getting information from the internet for Unity is using the <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Networking.UnityWebRequest.html">Unity Web Request Class</a>, we use the UnityWebRequest.Get(string url) function 
+              passing in the website url in the parameter to go to the website and get the weather data and 
+              then we use the SendWebRequest() function to request the page we want to get the data, this is done in a Coroutine so we use the yield 
+              keyword so that the code only continues once the SendWebRequest() function finishes.
+            </p>
+
+            <h3 class = "normal">Extracting Information into an XML Document</h3>
+
+            <img src="..\..\images\Connected Games Images\Week 7\image (3).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 7\image (4).png" style="width: 100%;">
+
+            <p>
+              The website we sent the web request too is just an XML document with all the data on the weather 
+              so the next thing i was taught was how to extract that information from the website and put it into my own XML Document using code. 
+              In Unity there is actually an XmlDocument class where i can create a document and using the LoadXML() function add text to that document and we get the text 
+              from the webrequest earlier by getting the text of the downloadHandler property. Then in the tutorial there was a very useful technique that i could possibly 
+              use in the future that first stores everything from the xml document into a string variable and we declare variables of speific text we are looking for.
+            </p>
+
+            <p>
+              Then we use the <a href="https://learn.microsoft.com/en-us/dotnet/api/system.string.indexof?view=net-9.0">IndexOf()</a> function which will find the text we are 
+              looking for and then get the start of that string and how many characters are in that string and store it in an 
+              integer variable, the same thing is also done to find the end of the text.  With the start and end position of the text stored we then use the 
+              <a href="https://learn.microsoft.com/en-us/dotnet/api/system.string.substring?view=net-9.0">SubString()</a> function to get the text from the XML Document using the start and end position integer variables to tell the program how many characters need to be taken 
+              from the string 
+              using the starting from the start of the text, then finally this string is stored in variables that can be used to display it on Unity.
+            </p>
+
+            <h3 class = "normal">Using Php file for the first time!</h3>
+            <img src="..\..\images\Connected Games Images\Week 7\image (5).png" style="width: 100%;">
+
+            <p>
+              Next part is getting the data from the weather api and using a php file to connect to our server and create 
+              a simple text document that has our data. I created a php file using Visual Studio Code called “api” and this has to be stored into our 
+              servers htdocs folder, the $_POST function purpose is to collect the data from the variable named “temperature” that is from Unity 
+              (With this function the variable name must match the variable in Unity that you want to use). This is repeated for
+               cloudiness and humidity and they are all combined into one variable so that with the file_put_contents 
+               function they can be added into a txt file called “data”.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 7\image (6).png" style="width: 100%;">
+
+            <p>
+              The last thing i will talk about from what i have learned about connecting to the internet with
+               Unity is Posting the data to the server, all we need to do is create a form using the WWForm Class and add in fields for each of the values we want to send to 
+              the server and then we use the UnityWebRequest.Post() function passing in where the php file is located in our server and also passing in the form we created.
+            </p>
+
+            
+
+            <img src="..\..\images\Connected Games Images\Week 7\Weather Api Example.gif" style="width: 100%;">
+
+            <h2 class = "normal">Connecting To Database</h2>
+
+            <p>That was the basics of connecting to the internet to get data with Unity, now its time for connecting to the database. In Unity saving and 
+              loading is pretty much the same using the Post() and Get() function using the UnityWebRequest class but the difference is within the php files.
+            </p>
+
+            <h3 class = "normal">Saving to Database</h3>
+
+            <img src="..\..\images\Connected Games Images\Week 7\image (7).png" style="width: 100%;">
+
+            <p>
+              The Php file is where we will do everything when it comes to communicating with the database, we first need to connect to the 
+              database by creating a variable called conn which with the new mysqli() function will connect to the database 
+              passing through the parameters showed above and to make sure that we have connected to the database using an if statement and calling the connect_error function.
+            </p>
+
+            <p>
+              Once we are successfully connected to the function we create a variable called $sql and in this we 
+              will want to call a command in SQL so in order to do this we will need to put that command in quotation marks to be a string, 
+              the SQL command we will be calling is the Insert Command where will be adding the username and userscore into the table named 
+              “highscores” into the columns “Name” and “Score” (The single quotations are there to turn the value of $userName and $userScore into strings for the command).
+            </p>
+
+            <p>
+              We then run a query so that the data is added to the database, if successful then we will finally close the connection to the database.
+            </p>
+
+            <h3 class = "normal">Loading from Database</h3>
+
+            <img src="..\..\images\Connected Games Images\Week 7\image (8).png" style="width: 100%;">
+
+            <p>Loading from database is similar to saving from database where we need to connect to our database
+               but the difference is that we use the select command to search through every value and get the 5 highest values, 
+               then we will run that command by using the mysqli_query to check through our database.
+               We will then call the mysqli_num_rows() function to return the amount of rows we have got from the SELECT command.
+            </p>
+
+            <p>
+              A For loop is then done depending on the amount of rows that was returned and using the mysqli_fetch_array() 
+              function we get the row of data (This will also include the columns of the rows) 
+              and we will output the data from that row which would be the value inside the name column and the value of the score column.     
+            </p>
+
+            <h2 class = "normal">References</h2>
+
+            <ul>
+              <li>Converting a string to an enum. (n.d.). Unity Discussions. <a href="https://discussions.unity.com/t/converting-a-string-to-an-enum/16705/2">https://discussions.unity.com/t/converting-a-string-to-an-enum/16705/2</a></li>
+              <li>How to loop through all enum values in C#? (n.d.). Stack Overflow. <a href="https://stackoverflow.com/questions/972307/how-to-loop-through-all-enum-values-in-c">https://stackoverflow.com/questions/972307/how-to-loop-through-all-enum-values-in-c</a></li>
+              <li>Reset player custom properties | Photon Engine. (n.d.). Photon Engine Support Forum | Photon Engine. <a href="https://forum.photonengine.com/discussion/5667/reset-player-custom-properties">https://forum.photonengine.com/discussion/5667/reset-player-custom-properties</a></li>
+              <li>Specified cast is not valid.. how to resolve this. (n.d.). Stack Overflow. <a href="https://stackoverflow.com/questions/5577484/specified-cast-is-not-valid-how-to-resolve-this">https://stackoverflow.com/questions/5577484/specified-cast-is-not-valid-how-to-resolve-this</a></li>
+              <li>Unity - Scripting API: Coroutine. (n.d.). Unity - Manual: Unity 6.1 User Manual. <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Coroutine.html">https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Coroutine.html</a></li>
+            </ul>
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>
