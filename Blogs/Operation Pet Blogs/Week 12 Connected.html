@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 12 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 12 - Login System added!</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Apr 09, 2025</h5>
+
+
+            <h2 class = "normal">Whats happened this week?</h2>
+
+            <ul>
+              <li>Implemented Login System using Firebase for authentication</li>
+              <li>Implemented Firebase Database to keep track of whether the player is online, the amount of matches they have played and the amount of matches they have won</li>
+              <li>Created UI Manager to make managing the UI easier just by calling code</li>
+              <li>Created Screen in Main Menu Scene where players can see their stats</li>
+              <li>Adjusted UI to scale to screen size</li>
+              <li>Fixed issue where unassigned food wasn’t being set as a mine</li>
+              <li>Created Gitignore for Firebase API Key</li>
+              <li>Can press the tab key to go between different input fields</li>
+              <li>Thank to <a href="https://discussions.unity.com/t/submit-inputfield-when-enter-is-clicked/124549/4">ToneDP</a> from Unity forum, the Enter key can now be used to login or register</li>
+            </ul>
+
+            <h3 style="color: blue;" class = "normal"><a href="https://1drv.ms/w/c/5556daf35dadc3a8/EfwhIYbAd_BHgZyNz-opysEBKwJVg4hYvtV0imhudt57QA?e=jxWhJg">Test Report</a></h3>
+
+
+            <h2 class = "normal">Firebase Authentication</h2>
+
+            <p>
+              With the core of the game pretty much done i decided to spend time looking into and doing research on how to create a login system for our game. Although i have followed tutorials on how to make a login system that was 
+              for a local server so it would only work on my computer and it was only to get me to understand the fundamentals of creating a login system especially the hashing of the password.
+               I looked at a bunch of backend systems i can use that goes well with Unity such as Playfab and GameSpark but in the end i decided to go with Firebase since it already had alot of support for Unity.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 12\image.png" style="width: 100%;">
+
+            <p>
+              Here are important variables that will be crucial for using the functionalitys of Firebase, the auth variable will allow us to go into Firebase and use their Authentication Service to login/ Register, once we have signed in we
+               store the user into a variable called “User” which allows us to access values such as the name of the user. Finally the DBreference variable allows us to use the Database service of Firebase to update the database.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 12\image (1).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 12\image (2).png" style="width: 100%;">
+
+            <p>
+              With Firebase before we do anything in the Awake() function we need to add code that checks that all the dependencies that are needed for 
+              Firebase are in the game and once that is done we should initialiseFirebase and keep reference to the instances so that we can use them for what we need.
+            </p>
+
+            <h3 class = "normal">Register</h3>
+            <img src="..\..\images\Connected Games Images\Week 12\image (3).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 12\image (4).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 12\image (5).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 12\image (6).png" style="width: 100%;">
+
+            <p>
+              The reason both the Register() and Login() functions are coroutine is so that the game doesn’t stop only to wait for these functions to finish and with the yield return new WaitUntil() statement we can wait for the code to actually finish 
+              accessing firebase before it continues with the rest of the code. we will look into the code for registering first, we will need to call the  CreateUserWithEmailAndPasswordAsync() function passing in the email and password we want to use to create the 
+              account and this will be stored in the RegisterTask variable, since we are doing this in a coroutine we can wait for the task to finish before continuing with the rest of the code.
+            </p>
+
+            <p>
+              Once the task is completed we check if there are any errors, and if there is then we will get the error code and depending on the error code we will make the on display text change.
+            </p>
+
+            <p>
+              If the task completed with no errors then that means the account was successfully created.
+            </p>
+
+            <p>
+              The task will have the result of the User profile and if it is not empty then we will create a new UserProfile object called “profile” setting the Display name to the username that was inputted into the input field during registration.   
+            </p>
+
+            <p>
+              Using the UpdateUserProfileAsync() we will pass in the profile variable we just created so that it will go to the Firebase authentication service and change the display name of that account. 
+              After some error checking if everything works fine then we will make the Input fields empty and go back to the login screen (The InitialiseDatabase() function will be talked about later on).
+            </p>
+
+            <h3 class = "normal">Logging In</h3>
+            <img src="..\..\images\Connected Games Images\Week 12\image (7).png" style="width: 100%;">
+            <p>
+              Implementing logging in is much more simpler compared to Register, all we really need to do is call the SignInWithEmailAndPasswordAsync() function passing in the email and password from what the 
+              player inputted and after the error checks with no errors it will just store the result into the User variable and will display the username of that account onto the screen, it will then move into the Main Menu Scene.
+
+
+            </p>
+
+            <h2 class = "normal">Firebase Database</h2>
+
+            <p>
+              For the Database we want to record the stats for how many games a player has played, how many the players have won and whether they are online in the game or not. 
+              I will explain how the online status check is done where we use two functions, the UpdateOnlineStatusDatabase() function and the LoadOnlineStatusData() function.
+            </p>
+
+            <h3 class = "normal">UpdateOnlineStatusDatabase Function</h3>
+            <img src="..\..\images\Connected Games Images\Week 12\image (8).png" style="width: 100%;">
+
+            <p>
+              Using the DBreference to find the json branch of where the value should be stored (Using the .Child Functions with the name of the branches) we use the SetValueAsync() 
+              function from the Database Reference variable type and whatever vallue is passed into that, will be set into the database. We also do a check afterwards to see if there was an error doing so.
+            </p>
+
+            <h3 class = "normal">LoadOnlineStatusData()</h3>
+            <img src="..\..\images\Connected Games Images\Week 12\image (9).png" style="width: 100%;">
+
+            <p>
+              Just like the UpdateOnlineStatusDatabase() function by using the DBReference to find the json branch of where the value is stored we will then this time use the GetValueAsync() function to get the value and store it in DBTask then we do some checks. 
+              If there is an error then we will show it, 
+              if the Result of the DBTask doesn’t have an error but the value is empty, then that means no data exists and we set the “isOnline” variable to false (This variable will be explained later).
+            </p>
+
+            <p>
+              If there is a value then data exists and since the data from the database is received as a DataSnapshot variable type we create a variable of that type and store the result of the DBTask. 
+              Finally with the data snapshot we now have the value from the database, 
+              we will get that value from the snapshot variable as a string and convert it into a boolean which will then be stored in the “isOnline” variable.
+            </p>
+
+            <h2 class = "normal">Only one account online at a time</h2>
+            <img src="..\..\images\Connected Games Images\Week 12\image (10).png" style="width: 100%;">
+
+            <p>
+              Now for the reasoning of the existence of the “isOnline” variable. During the Login() function just before logging in and changing scenes, there is a check to see if the “isOnline” variable is true or not. To get this value we first need to call the 
+              LoadOnlineStatusData() function which will set the “isOnline” variable and after that function is done, then the check can be done.
+            </p>
+
+            <p>
+              If “isOnline” is set to true, then that means the user is already logged in and it will sign the User out, if it is false then it will call the UpdateOnlineStatusDatabase() function and pass in true so that the account can’t be logged in on multiple devices.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 12\image (11).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 12\image (12).png" style="width: 100%;">
+
+            <p>
+              Just so the user can’t be locked out of the account, we update the database value to false when the user quits the game by 
+              calling UpdateOnlineStatusDatabase() function in the Unity callback function OnApplicationQuit(). We also set the Online status to false when the user presses the SignOut() button.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 12\Week 12 Final.gif" style="width: 100%;">
+           
+            <h2 class = "normal">References</h2>
+
+            <ul>
+              <li>How to check which scene is loaded and write if code for it. (n.d.). Unity Discussions. <a href="https://discussions.unity.com/t/how-to-check-which-scene-is-loaded-and-write-if-code-for-it/163399">https://discussions.unity.com/t/how-to-check-which-scene-is-loaded-and-write-if-code-for-it/163399</a></li>
+              <li>How to generate a new Firebase ApiKey. (n.d.). <a href="https://stackoverflow.com/questions/46035322/how-to-generate-a-new-firebase-apikey">https://stackoverflow.com/questions/46035322/how-to-generate-a-new-firebase-apikey</a></li>
+              <li>Ignoring files - GitHub Docs. (n.d.). GitHub Docs. <a href="https://docs.github.com/en/get-started/git-basics/ignoring-files">https://docs.github.com/en/get-started/git-basics/ignoring-files</a></li>
+              <li>Is there a method that calls when a game Closes via the Close Button? (n.d.). Unity Discussions. <a href="https://discussions.unity.com/t/is-there-a-method-that-calls-when-a-game-closes-via-the-close-button/11296">https://discussions.unity.com/t/is-there-a-method-that-calls-when-a-game-closes-via-the-close-button/11296</a></li>
+              <li>JTAGames. (2022, November 17). Unity Layout Groups: What are they, and why are they important? [Video]. YouTube. <a href="https://www.youtube.com/watch?v=UzTJfaSAclQ">https://www.youtube.com/watch?v=UzTJfaSAclQ</a></li>
+              <li>Singletons in Unity (done right) - Game Dev Beginner. (n.d.). Game Dev Beginner. <a href="https://gamedevbeginner.com/singletons-in-unity-the-right-way/">https://gamedevbeginner.com/singletons-in-unity-the-right-way/</a></li>
+              <li>Submit inputField when Enter is clicked. (n.d.). Unity Discussions. <a href="https://discussions.unity.com/t/submit-inputfield-when-enter-is-clicked/124549/4">https://discussions.unity.com/t/submit-inputfield-when-enter-is-clicked/124549/4</a></li>
+              <li>UI Button create by script C#. (n.d.). Unity Discussions. <a href="https://discussions.unity.com/t/ui-button-create-by-script-c/560428/3">https://discussions.unity.com/t/ui-button-create-by-script-c/560428/3</a></li>
+              <li>xzippyzachx. (2020, September 5). Unity User Login System Tutorial - Firebase Authentication [Video]. YouTube. <a href="https://www.youtube.com/watch?v=NsAUEyA2TRo">https://www.youtube.com/watch?v=NsAUEyA2TRo</a></li>
+            </ul>
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>

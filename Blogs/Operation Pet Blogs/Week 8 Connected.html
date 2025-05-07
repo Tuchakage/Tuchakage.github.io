@@ -31,7 +31,7 @@
         <!-- Separates the Navigation Bar with everything else below -->
         <div style="padding:20px;margin-top:30px;height:1500px;">
           <div class="header">
-            <h1 class = "normal">Week 8</h1>
+            <h1 class = "normal">Week 8 - Gameplay coming together!</h1>
           </div>
           <div class="leftcolumn">
             <div class = "card">
@@ -155,15 +155,68 @@
               clients will be checking and waiting to receive it every frame when all they need to do is hear the function call and update the score themselves.
             </p>
 
-          
+            <h3 class = "normal">Pet Food</h3>
+            <img src="..\..\images\Connected Games Images\Week 8\image (8).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 8\image (9).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 8\image (10).png" style="width: 100%;">
+
+            <p>For the food collectible i created a script called PetFood which mainly uses Unitys OnTriggerEnter() callback to run the code. There is a check to see 
+              if the object that collided has a tag called Player which all Player prefabs will have, there one more check that is done before increasing the score and that is checking whether the food collectible is fake or not. 
+              This variable is going to be set by the Food spawner where it will decide which food will be the fake one, if the food is fake then an RPC will be called to call a function called Explode for all players in the room.
+            </p>
+
+            <p>
+              If the collectible is not fake then it will get reference to the Players photonView controller and will get the team the player is for, it will then check if the 
+              players team is the same as the “foodFor” variable of the teamsEnum class and if that is true then it will RPC call the IncreaseScore() function increasing the score of that team from the scoreManager for all players, if not it will decrease the score.
+            </p>
+
+            <h2 class = "normal">Round Management</h2>
+
+            <p>
+              Operation Pet will have 4 rounds in a game (5 if there is a draw after the 4 rounds) 
+              and after each round the players will swap roles. For this week i got started on implementing players being able to go into the next round but for now it is only when the timer runs out, for this i created a new script called RoundManager.
+            </p>
+
+            <h3 class = "normal">Time is ticking!</h3>
+            <img src="..\..\images\Connected Games Images\Week 8\image (11).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 8\image (12).png" style="width: 100%;">
+
+            <p>
+              The way the timer works is that the RoundManager implements the IPunObservable interface which gives us access to the OnPhotonSerializeView() function which can synchronise variables for 
+              all players in the room and then in the update function the timer will start going down if it is more than 0 but i make it so that only the master client does this meaning that everyone is syncing with the master clients time.
+
+              If the timer runs out then the CheckRoundWinner() function is called which is currently a work in progress.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 8\Week 8 Final.gif" style="width: 100%;">
+
+            <h2 class = "normal">The Importance of Planning Discovered!</h2>
+            <img src="..\..\images\Connected Games Images\Week 8\image (13).png" style="width: 100%;">
+
+            <p>When creating a new feature i add a Trello card and something i have been doing recently and forgetting to mention is how i will write down 
+              notes on possible things i could do to get the feature working an example for this is my Pet Food Trello card where before i began implementing it i wrote down things i should consider when adding 
+              this feature (As you can see in the screenshot above). Doing this whilst creating my project has massively helped me implement this feature as it gets all my ideas down somwhere and when i read it again, if it doesn’t make sense then i alter it. 
+              Before i would do this whilst 
+              coding but i started doing this because i wasn’t at a computer and had a lot of ideas in my head on how to implement certain features and once i get onto a computer and follow the notes i have written my coding skills have gotten faster.
+            </p>
+
+            <h2 class = "normal">Code Architecture Creation</h2>
+            <img src="..\..\images\Connected Games Images\Week 8\UML_Diagram_of_game.jpg" style="width: 100%;">
+
+            <p>
+              I created a UML Diagram to showcase the code architecture of our game for the 
+              presentation next week showcasing how each of the different classes link up with each other, creating this also helped me plan out what i wanted to do for each script e.g the petFoodSpawner script that i havent created yet.
+            </p>
+
             <h2 class = "normal">References</h2>
 
             <ul>
-              <li>Converting a string to an enum. (n.d.). Unity Discussions. <a href="https://discussions.unity.com/t/converting-a-string-to-an-enum/16705/2">https://discussions.unity.com/t/converting-a-string-to-an-enum/16705/2</a></li>
-              <li>How to loop through all enum values in C#? (n.d.). Stack Overflow. <a href="https://stackoverflow.com/questions/972307/how-to-loop-through-all-enum-values-in-c">https://stackoverflow.com/questions/972307/how-to-loop-through-all-enum-values-in-c</a></li>
-              <li>Reset player custom properties | Photon Engine. (n.d.). Photon Engine Support Forum | Photon Engine. <a href="https://forum.photonengine.com/discussion/5667/reset-player-custom-properties">https://forum.photonengine.com/discussion/5667/reset-player-custom-properties</a></li>
-              <li>Specified cast is not valid.. how to resolve this. (n.d.). Stack Overflow. <a href="https://stackoverflow.com/questions/5577484/specified-cast-is-not-valid-how-to-resolve-this">https://stackoverflow.com/questions/5577484/specified-cast-is-not-valid-how-to-resolve-this</a></li>
-              <li>Unity - Scripting API: Coroutine. (n.d.). Unity - Manual: Unity 6.1 User Manual. <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Coroutine.html">https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Coroutine.html</a></li>
+              <li>C# Programming With Unity - Static Classes. (n.d.). Anyone Can Learn To Make Games. <a href="https://awesometuts.com/blog/c-sharp-static-class/">https://awesometuts.com/blog/c-sharp-static-class/</a></li>
+              <li>I want to call PunRPC only to a specific player | Photon Engine. (n.d.). Photon Engine Support Forum | Photon Engine. <a href="https://forum.photonengine.com/discussion/16113/i-want-to-call-punrpc-only-to-a-specific-player">https://forum.photonengine.com/discussion/16113/i-want-to-call-punrpc-only-to-a-specific-player</a></li>
+              <li>Rehope Games. (2023, June 17). Make a TIMER & COUNTDOWN in 5 Mins | Unity Tutorial for Beginners [Video]. YouTube. <a href="https://www.youtube.com/watch?v=POq1i8FyRyQ">https://www.youtube.com/watch?v=POq1i8FyRyQ</a></li>
+              <li>samyam. (2022, January 24). The Ultimate Introduction to Scriptable Objects in Unity [Video]. YouTube. <a href="https://www.youtube.com/watch?v=cy49zMBZvhg">https://www.youtube.com/watch?v=cy49zMBZvhg</a></li>
+              <li>Tarodev. (2021, June 22). Explosions in Unity! Let's blow some stuff up ;) [Video]. YouTube. <a href="https://www.youtube.com/watch?v=-f--hnAHGQI">https://www.youtube.com/watch?v=-f--hnAHGQI</a></li>
+              <li>Unity - Scripting API: Color. (n.d.). Unity - Manual: Unity 6.1 User Manual. <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Color.html">https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Color.html</a></li>
             </ul>
 
           </div>

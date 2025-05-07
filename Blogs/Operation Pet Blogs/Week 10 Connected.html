@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 10 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 10 - Deathmatch Food added!</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Mar 26, 2025</h5>
+
+
+            <h2 class = "normal">Whats happened this week?</h2>
+
+            <ul>
+              <li>New Rounds can start</li>
+              <li>Implemented Deathmatch</li>
+              <li>Roles can be swapped after each round</li>
+              <li>Winners of rounds can be detected</li>
+
+            </ul>
+
+            <h3 style="color: blue;" class = "normal"><a href="https://1drv.ms/w/c/5556daf35dadc3a8/EZufOC75bv9EmY3Hsgjf49sB3jHvrgM2FH2_FBI0zm7PVw?e=SIfOB8">Week 10 Test Report</a></h3>
+
+
+            <h2 class = "normal">Deathmatch (Round Manager Changes)</h2>
+
+            <p>
+              This week a lot of good progress was made for the cores of our game. Specifically having multiple rounds. In Operation Pet there are initially 4
+               rounds but if by the end of round 4, teams have the same points then the teams that are drawing will be put into a deathmatch.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 10\image.png" style="width: 100%;">
+
+            <p>
+              At the bottom of the CheckGameWinner() function explained last week i added code that will start the deathmatch if there is more than one element in the possibleWinners List meaning that those teams have the same points. 
+              It will simply call the IncreaseRoundNumProperty() function which was also shown in last weeks code which basically Gets the value from the key “Round Number” stored in the Photons Current Room Custom Property and 
+              it will increase that value by 1 before sending it back to the current room custom property, The purpose of doing this is causing a round 5 which essentially means its the deathmatch.
+            </p>
+
+            <h2 class = "normal">Changes in PetFoodSpawner Script</h2>
+            <img src="..\..\images\Connected Games Images\Week 10\image (1).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 10\image (2).png" style="width: 100%;">
+
+            <p>
+              Now in the PetFoodSpawner script in the SpawnFood() function i changed the code so that it will first check the room custom property of the round Number, if that value is between 0 and 4 then it will spawn the food in normally. 
+              If the round number is more than 4 then that means we are in a deathmatch and it will Spawn the deathmatch food 
+              (For now its the Nut model) and it will call an RPC that will set the variable called “everyoneCanPickUp” to true for all players in the game then it will set the timer of the round to 30 seconds.
+            </p>
+
+            <h2 class = "normal">PetFood Deathmatch</h2>
+            <p>
+              I needed to modify the PetFood script in a way that when it is the deathmatch round that all players are able to pick up the food and whoever picks it up is the winner.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 10\image (3).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 10\image (4).png" style="width: 100%;">
+
+            <p>
+              This is where i came up with the idea of having a variable called “anyoneCanPickUp” which determines whether or not everyone can pick it up. 
+              This variable is set to true when the food is spawned in by the PetFoodSpawner which calls an RPC so that every player knows that “anyoneCanPickUp” is set to true.
+            </p>
+
+            <p>
+              In the OnTriggerEnter function it will do a check to see if it can be picked up by anyone, if the variable is false then the food 
+              will simply increase the score for the team. If it is set to true, then it will get the Players information from the Photon Server and store it in a local variable, t
+              hen with that information it calls the GetTeam() function which will go into the players custom property and find what team it is apart of. 
+            </p>
+
+            <p>
+              It will then call the RPCs for both the increase score function of the scoremanager and the GameWinner() function of the roundManager, 
+              passing in what team the player is apart of. Then because of the GameWinner() function a console log will show the winning team.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 10\Week 10 Final.gif" style="width: 100%;">
+            
+            <h2 class = "normal">References</h2>
+
+            <ul>
+              <li>Collection was modified; enumeration operation may not execute. (n.d.). Unity Discussions. <a href="https://discussions.unity.com/t/collection-was-modified-enumeration-operation-may-not-execute/806105">https://discussions.unity.com/t/collection-was-modified-enumeration-operation-may-not-execute/806105</a></li>       
+              <li>InvalidOperationException: Collection was modified; enumeration operation may not execute. (n.d.). Unity Discussions. <a href="https://discussions.unity.com/t/invalidoperationexception-collection-was-modified-enumeration-operation-may-not-execute/541294">https://discussions.unity.com/t/invalidoperationexception-collection-was-modified-enumeration-operation-may-not-execute/541294</a></li>     
+            </ul>
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>

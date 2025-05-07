@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 13 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 13 - The Results are in!</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Apr 16, 2025</h5>
+
+
+            <h2 class = "normal">Whats happened this week?</h2>
+
+            <ul>
+              <li>Designed how Results Screen will work using Miro and Trello to plan</li>
+              <li>Implemented Results Screen with players being put into the correct position depending on their score.</li>
+            </ul>
+
+            <h3 style="color: blue;" class = "normal"><a href="https://1drv.ms/w/c/5556daf35dadc3a8/EdiymKm1sVhOr-fEjoCipxwBUEmEQZ9ZFUzLasSi1Pz5kg?e=xfyA0J">Results Manager Test Report</a></h3>
+              <h3 style="color: blue;" class = "normal"><a href="https://1drv.ms/w/c/5556daf35dadc3a8/EfHxdYftEo1Hg5SEh4SDUk0Bwgvm0CVszwOnmFCbxUnhhw?e=x7M8CG">Firebase Test Report</a></h3>
+
+            
+                <p>
+                  This week as the deadline approaches there was one thing missing in the core gameplay which is the results screen to show where each team is placed.
+                </p>
+
+                <img src="..\..\images\Connected Games Images\Week 13\image.png" style="width: 100%;">
+                
+                <p>
+                  I wasn’t sure how i was going to implement this so i decided to use the Trello card to write down any ideas that came to mind (<a href="https://trello.com/c/tHaLRS0N/82-results-screen">Click here to check Trello card</a>) 
+                  and used <a href="https://miro.com/app/board/uXjVINtsvgE=/?moveToWidget=3458764625026659121&cot=14">Miro</a> to visualise how the team rankings will look like and how the teams will be sorted.
+                </p>
+
+
+            <h2 class = "normal">ResultsManager Script</h2>
+
+
+            <p>
+              The main challenge of the results screen was figuring out how the logic for sorting out the teams was going to work especially since when doing research initially i found out how dictionarys can’t be sorted 
+              unlike Lists and Arrays but thanks to this stack overflow post i was able to find out a variety of ways i could sort the dictionary. Although it was advised to not try to sort a dictionary since they are unordered so there was a possibility it 
+              wouldn’t be ordered i decided to use the OrderBy() function which converts the dictionary 
+              into an IOrderedEnumerableList and then uses the ToDictionary() function to convert it back into the dictionary, i read that as long as i’m not trying to sort a huge dictionary it should be fine.    
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 13\image (1).png" style="width: 100%;">
+
+            <p>
+              I created a function called SortTeams() which works similar to the CheckGameWinner() function used in the RoundManager script. The code will go through every team that exists and
+               if there is more than 1 player in that team then it will check the score of that team, store it in a dictionary called “sortedRankedTeams” and call the CheckAmntWinners function() 
+              (Will get onto after this section). After the loop it will then be sorted with the OrderByDescending() function converting it to a IOrderedEnumerable List and then will be converted back into a dictionary.
+            </p>
+
+            <h2 class = "normal">Selecting a Set</h2>
+
+            <img src="..\..\images\Connected Games Images\Week 13\image (2).png" style="width: 100%;">
+
+            <p>
+              Sets are important because they will showcase the position of each team by spawning the pet character of the team in those spots depending on their position in the sortedRankedTeams dictionary.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 13\image (3).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 13\image (4).png" style="width: 100%;">
+
+            <p>
+              The Set that is chosen is dependant on the amount of winners there are in the game, which is why we have the CheckAmntWinners() function. This will keep track of all the possible winners of the game. If the teams
+               score is higher than the current highscore then we will add it to the possibleWinners List but if there is more than one team in that Dictionary
+               then we will call RemoveFromWinningTeams() function which checks all the teams in the possibleWinners dictionary and if there are any teams scores that are lower than the current highscore then they will be removed from the dictionary.
+            </p>
+
+            <p>If the team have the same as the highscore then they are just simply added to the possibleWinners dictionary.</p>
+
+            <img src="..\..\images\Connected Games Images\Week 13\image (5).png" style="width: 100%;">
+
+            <p>
+              Now that the possible winners dictionary is complete we can now check which set to use. I have created a function called SelectSet() which will choose a set depending on how many winners are in the possibleWinners dictionary.
+            </p>
+
+            <img src="..\..\images\Connected Games Images\Week 13\image (6).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 13\image (7).png" style="width: 100%;">
+
+            <p>
+              We then do a for loop going through the SetList( A List filled with the different sets that were created in the Unity Editor) and get rid of any that won’t be used.
+            </p>
+
+            <p>
+              With the teams sorted in the dictionary and the right set selected we then spawn in the model for each team destroying their rigid bodies so that they dont fall (Right now we are using Cubes as the players) and then we call IncreaseMatchWonStat through RPC if the team has won.
+            </p>
+
+            <h2 class = "normal">Progress So Far</h2>
+            
+            <img src="..\..\images\Connected Games Images\Week 13\Week 13 Final.gif" style="width: 100%;">
+           
+            <h2 class = "normal">References</h2>
+
+
+            <ul>
+              <li>Dictionary.ContainsKey(TKey) Method (System.Collections.Generic) [online], (no date). Microsoft Learn: Build skills that open doors in your career. [Viewed 20 April 2025]. Available from: <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.containskey?view=net-9.0">https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.containskey?view=net-9.0</a></li>
+              <li>How to Convert Dictionary value to List in Unity [online], (no date). [Viewed 19 April 2025]. Available from: <a href="https://stackoverflow.com/questions/53680500/how-to-convert-dictionary-value-to-listmyclass-in-unity">https://stackoverflow.com/questions/53680500/how-to-convert-dictionary-value-to-listmyclass-in-unity</a></li>
+              <li>https://stackoverflow.com/questions/289/how-do-you-sort-a-dictionary-by-value [online], (no date). [Viewed 19 April 2025]. Available from: <a href="https://stackoverflow.com/questions/289/how-do-you-sort-a-dictionary-by-value">https://stackoverflow.com/questions/289/how-do-you-sort-a-dictionary-by-value</a></li>
+              <li>Why would I use Enumerable.ElementAt() versus the [] operator? [online], (no date). [Viewed 19 April 2025]. Available from: <a href="https://stackoverflow.com/questions/5326874/why-would-i-use-enumerable-elementat-versus-the-operator">https://stackoverflow.com/questions/5326874/why-would-i-use-enumerable-elementat-versus-the-operator</a></li>
+            </ul>
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>
