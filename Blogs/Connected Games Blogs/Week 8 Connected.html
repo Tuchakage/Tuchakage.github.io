@@ -41,172 +41,121 @@
             <h2 class = "normal">Whats happened this week?</h2>
 
             <ul>
-              <li>Thinking of ways to improve my planning when it comes to Programming (Using word documents and Flow Charts)</li>
-              <li>Created a flowchart for a function that will check if teams are ready to start the game <a href="https://trello.com/1/cards/67acb3a85d2413dd826307ef/attachments/67d088755608d302219b6bda/download/CheckingReadyTeams().png">https://trello.com/1/cards/67acb3a85d2413dd826307ef/attachments/67d088755608d302219b6bda/download/CheckingReadyTeams().png</a></li>
-              <li>Attempted Account Creation</li>
-              <li>Amount Of Players in a team in the room can be seen</li>
-              <li>When Player leaves the game the team custom player property is set to null</li>
+              <li>Got started on Spawning Players into game after picking a team in lobby</li>
+              <li>Created ScriptableObjects for player models</li>
+              <li>Added Collectible food</li>
+              <li>Presentation Prep</li>
+              <li>Created UML Diagram for my code architecture for presentation</li>
+              <li>Started Round Manager & ScoreManager</li>
+              <li>Changed team names from colours to animals</li>
+              <li>Added mines</li>
+              <li>Food can be disguised as mines</li>
+              <li>Added Timer</li>
+              <li>Created TeamsEnum</li>
+
             </ul>
 
-            <h3 style="color: blue;" class = "normal"><a href="https://1drv.ms/b/c/5556daf35dadc3a8/Ecr9Gq5y8T9CpmwMtH9QAdoBUnPyBwwL8qszVh8YvHHSlQ?e=onRvV7">Week 7 Test Report</a></h2>
+            
 
             
             <p>
-              This week has helped me realise the importance of documenting and planning when it comes to programming for example, i was thinking of ways to 
-              implement a function that checks if every team is ready and i decided to create a 
-              flowchart for it and it massively helped. Operation Pet (The name of our game now) now is able to load into a 
-              level after checking if all teams
+              This week i started preparing for the presentation that is next week and wanted to get the 
+              game to a state where the audience could see a level a designer has made. I also created a UML Diagram showcasing the architecture of the game for the presentation.
             </p>
 
-            <h2 class = "normal">Checking if every Team is ready</h2>
-
-            <p>
-              In order to start the game every player needs to be readied up and not only that but teams MUST have 2 players, a 
-              one person team is not acceptable in this game. To implement this 
-              into the game i created a flowchart to help me visualise how the code is actually going to work.
-            </p>
+            <h2 class = "normal">Using Scriptable Objects</h2>
 
 
-            <img src="..\..\images\Connected Games Images\Week 7\image.png" style="display: block; margin-left: auto;  margin-right: auto; width: 50%; text-align: center;">
+            <img src="..\..\images\Connected Games Images\Week 8\image.png" style="width: 100%;">
 
 
 
             <p>
-              How this function will basically work is that it will check through all the possible teams that players
-               can join and it will check how many players are in each of them. If there are teams with no players then we will ignore those teams, 
-               if there are teams with 2 players then we will increase the integer variable 
-              “readyTeamCount” by 1 and if there is only 1 player in the team or somehow more than 2, then we will return false which means that teams are not ready.
+              Scriptable objects are useful for saving objects, once you make a change in 
+              them they stay the same even if the change is only done in the editor. My purpose for using them is so that designers can easily add in the animal models once 
+              they are ready and thanks to the scriptable object i wont need to change anything in the code as long as my code has reference to the scriptable object.
             </p>
 
-            <img src="..\..\images\Connected Games Images\Week 7\image (1).png" style="width: 100%;">
+            <p>For now as the other programmer is working on the player i will be using coloured cubes that have a 
+              photonView and photon Transform View component which allows the cubes movement to be synced across the network meaning all players can see them move.</p>
+
+              <h2 class = "normal">Team Enumerator</h2>
+            
+              <img src="..\..\images\Connected Games Images\Week 8\image (1).png" style="width: 100%;">
 
             <p>
-              Here is the function i created from that flow chart, i made some adjustments so that it will first 
-              check if there are any players in the Unassigned Team (Meaning they haven’t joined a team yet) then the game will not start.
+              To easily setup teams and roles i created a public static class so that all scripts can easily get access to the Enumerators for example, 
+              it is used when setting which team the collectible is for, they are also used to set the roles of players which will be explained later.
             </p>
+
+            <h2 class = "normal">Spawning Players into Game</h2>
 
             <p>
-              This function is called can be called at multiple times in the main menu, once in the OnPlayerPropertyUpdate() Photon callback so that 
-              when everyone is ready after pressing the ready button (Which will call the OnPlayerPropertyUpdate callback) then the 
-              game will just start. It is called in the StartGame() function just to do a final check that all teams and players are ready before starting the game. 
-            </p>
-
-            <p>Finally it is also called in the OnPlayerLeftRoom() Photon callback, the reason for putting it here is so that say that there are 2 teams 
-              who are readied up but the game can’t start because there is a 5th player in the game, 
-              as soon as the 5th player leaves then the game is able to start, instead of having players having to reapply there ready status to start the game.
-            </p>
-
-
-            <img src="..\..\images\Connected Games Images\Week 7\Week 7 Showcasing Teams.gif" style="width: 100%;">
-
-            <h2 class = "normal">Database Understanding & Connecting Unity to Internet</h2>
-
-            <p>
-              We are planning to have a login system in our game so i decided to go through the tutorial created by our 
-              Professor Vasilis to get a basic understanding on how databases are handled in Unity, this also includes how to connect Unity to the internet to
-               gather information on the weather 
-              and display it on Unity using the <a href="https://openweathermap.org/api">weather API</a>. A local server on my PC was used to store my database thanks to this application called <a href="https://www.apachefriends.org/download.html">xampp control panel</a>.
-            </p>
-
-            <h3 class = "normal">Getting info from Internet</h3>
-            <img src="..\..\images\Connected Games Images\Week 7\image (2).png" style="width: 100%;">
-
-            <p>
-              The key to getting information from the internet for Unity is using the <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Networking.UnityWebRequest.html">Unity Web Request Class</a>, we use the UnityWebRequest.Get(string url) function 
-              passing in the website url in the parameter to go to the website and get the weather data and 
-              then we use the SendWebRequest() function to request the page we want to get the data, this is done in a Coroutine so we use the yield 
-              keyword so that the code only continues once the SendWebRequest() function finishes.
-            </p>
-
-            <h3 class = "normal">Extracting Information into an XML Document</h3>
-
-            <img src="..\..\images\Connected Games Images\Week 7\image (3).png" style="width: 100%;">
-            <img src="..\..\images\Connected Games Images\Week 7\image (4).png" style="width: 100%;">
-
-            <p>
-              The website we sent the web request too is just an XML document with all the data on the weather 
-              so the next thing i was taught was how to extract that information from the website and put it into my own XML Document using code. 
-              In Unity there is actually an XmlDocument class where i can create a document and using the LoadXML() function add text to that document and we get the text 
-              from the webrequest earlier by getting the text of the downloadHandler property. Then in the tutorial there was a very useful technique that i could possibly 
-              use in the future that first stores everything from the xml document into a string variable and we declare variables of speific text we are looking for.
+              Since our lobby menu is done it is now time to get to the next phase of the game which is spawning 
+              the players into the game level, to do this i created a Roles Manager script that will handle spawning in both the Pet role and the Wizard role.
             </p>
 
             <p>
-              Then we use the <a href="https://learn.microsoft.com/en-us/dotnet/api/system.string.indexof?view=net-9.0">IndexOf()</a> function which will find the text we are 
-              looking for and then get the start of that string and how many characters are in that string and store it in an 
-              integer variable, the same thing is also done to find the end of the text.  With the start and end position of the text stored we then use the 
-              <a href="https://learn.microsoft.com/en-us/dotnet/api/system.string.substring?view=net-9.0">SubString()</a> function to get the text from the XML Document using the start and end position integer variables to tell the program how many characters need to be taken 
-              from the string 
-              using the starting from the start of the text, then finally this string is stored in variables that can be used to display it on Unity.
+              The roles for each player is going to be stored in the player custom property, 
+              this is so that everyone in the game knows what roles each other are and this is especially useful for our SelectPet() and SelectWizard() functions.
             </p>
 
-            <h3 class = "normal">Using Php file for the first time!</h3>
-            <img src="..\..\images\Connected Games Images\Week 7\image (5).png" style="width: 100%;">
+
+            <img src="..\..\images\Connected Games Images\Week 8\image (2).png" style="width: 100%;">
 
             <p>
-              Next part is getting the data from the weather api and using a php file to connect to our server and create 
-              a simple text document that has our data. I created a php file using Visual Studio Code called “api” and this has to be stored into our 
-              servers htdocs folder, the $_POST function purpose is to collect the data from the variable named “temperature” that is from Unity 
-              (With this function the variable name must match the variable in Unity that you want to use). This is repeated for
-               cloudiness and humidity and they are all combined into one variable so that with the file_put_contents 
-               function they can be added into a txt file called “data”.
+              In our game we can’t have two players who are in the same role especially since after each round players will swap roles, so i created a function 
+              called SetTeammate() which returns the Playerclass, this function goes through all the players in the room and checks if there is another 
+              player in the same team and a reference of that player will be kept to check what role they are so that the player can’t select the same class as them.
             </p>
 
-            <img src="..\..\images\Connected Games Images\Week 7\image (6).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 8\image (3).png" style="width: 100%;">
 
             <p>
-              The last thing i will talk about from what i have learned about connecting to the internet with
-               Unity is Posting the data to the server, all we need to do is create a form using the WWForm Class and add in fields for each of the values we want to send to 
-              the server and then we use the UnityWebRequest.Post() function passing in where the php file is located in our server and also passing in the form we created.
+              The SelectPet() and SelectWizard() functions are crucial functions for spawning the player in, first thing 
+              that is done is a check to see what the role their teammate is, if it is the same role they 
+              are trying to choose then return is called kicking them out of the function. if it is not the same role as their teammate then the code will continue.
             </p>
 
+            <img src="..\..\images\Connected Games Images\Week 8\image (4).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 8\image (5).png" style="width: 100%;">
+
+            <p>Then depending on what team and what role, the function will look for spawnpoints that have already been
+               added to the level, then exclusive to the  SelectPet() function (Since Wizards won’t have a model) we store what was returned from CheckModelToSpawn() 
+               function which simply sets the role of the player in their custom property and a switch case is used to check what team they are on and then return the player model 
+               they should use from the scriptable object. After that is done, 
+              the ui displaying the roles will be disabled and we call PhotonNetwork.Instantiate passing in the name of our model and their spawnpoint.
+            </p>
+
+            <h2 class = "normal">More on Photon Instantiate</h2>
+          
+            <p>
+              The purpose of using Photon Networks instantiate instead of Unitys normal Instantiate 
+              function is so that the object that is spawned in is a network object where the client that spawned it in is the owner of the object. 
+              In Photons way of Instantiating you might’ve noticed we need to pass in a string with the name of the prefab instead of the Game Object prefab, this is because of 
+              the resources folder which allows the game to load the asset during runtime and everything in the resources folder is added to the game build.
+            </p>
+
+            <h2 class = "normal">Food & Scores!</h2>
             
 
-            <img src="..\..\images\Connected Games Images\Week 7\Weather Api Example.gif" style="width: 100%;">
-
-            <h2 class = "normal">Connecting To Database</h2>
-
-            <p>That was the basics of connecting to the internet to get data with Unity, now its time for connecting to the database. In Unity saving and 
-              loading is pretty much the same using the Post() and Get() function using the UnityWebRequest class but the difference is within the php files.
-            </p>
-
-            <h3 class = "normal">Saving to Database</h3>
-
-            <img src="..\..\images\Connected Games Images\Week 7\image (7).png" style="width: 100%;">
-
             <p>
-              The Php file is where we will do everything when it comes to communicating with the database, we first need to connect to the 
-              database by creating a variable called conn which with the new mysqli() function will connect to the database 
-              passing through the parameters showed above and to make sure that we have connected to the database using an if statement and calling the connect_error function.
+              This week i have also added a crucial part of the game which is the food collectibles and we have models for them found by our designers!
+               Since i have added the food collectibles this also meant i had to add Scores into the game.
             </p>
 
-            <p>
-              Once we are successfully connected to the function we create a variable called $sql and in this we 
-              will want to call a command in SQL so in order to do this we will need to put that command in quotation marks to be a string, 
-              the SQL command we will be calling is the Insert Command where will be adding the username and userscore into the table named 
-              “highscores” into the columns “Name” and “Score” (The single quotations are there to turn the value of $userName and $userScore into strings for the command).
+            <h3 class = "normal">ScoreManager</h3>
+            <img src="..\..\images\Connected Games Images\Week 8\image (6).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 8\image (7).png" style="width: 100%;">
+
+            <p>I created a script to manage how the scores will be displayed and synced across the network called ScoreManager, 
+              this script will create a dictionary with the key value pairing of the teamsEnum (Enumeration with the different team names) and an integer that will represent
+               the score of the team. This will be kept track locally for each player and the score will be updated using Photons RPC (Remote Procedure Call) i was thinking of 
+               using the OnPhotonSerializeView which will sync the score variable across the network but then remembered that 
+              clients will be checking and waiting to receive it every frame when all they need to do is hear the function call and update the score themselves.
             </p>
 
-            <p>
-              We then run a query so that the data is added to the database, if successful then we will finally close the connection to the database.
-            </p>
-
-            <h3 class = "normal">Loading from Database</h3>
-
-            <img src="..\..\images\Connected Games Images\Week 7\image (8).png" style="width: 100%;">
-
-            <p>Loading from database is similar to saving from database where we need to connect to our database
-               but the difference is that we use the select command to search through every value and get the 5 highest values, 
-               then we will run that command by using the mysqli_query to check through our database.
-               We will then call the mysqli_num_rows() function to return the amount of rows we have got from the SELECT command.
-            </p>
-
-            <p>
-              A For loop is then done depending on the amount of rows that was returned and using the mysqli_fetch_array() 
-              function we get the row of data (This will also include the columns of the rows) 
-              and we will output the data from that row which would be the value inside the name column and the value of the score column.     
-            </p>
-
+          
             <h2 class = "normal">References</h2>
 
             <ul>
