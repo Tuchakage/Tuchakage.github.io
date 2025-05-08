@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 14 Connected Games</title>
+    <link rel="stylesheet" href="../../styles/blogs.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script async src="../../javascript/index.js"></script>  
+    <script src="https://kit.fontawesome.com/0a66c744b9.js" crossorigin="anonymous"></script>  
+  </head>
+  <body>
+            <!-- Navigation Bar Stuff -->
+      <!-- The ul tag defines an unordered (bulleted) list -->
+      <ul class="bar">
+        <li><a class="nav" href="../../index.html">Home</a></li>
+        <li><a class="nav" href="../../projects.html">My Projects</a></li>
+        <li><a class = "active nav" href="../../blogs.html">My Blogs</a></li>
+        <!-- The A tag defines a hyperlink -->
+        <a href="https://github.com/Tuchakage">
+          <!-- Makes a github logo -->
+          <i class="fab fa-github" style="font-size:64px;float:right;color:black;"></i>  
+        </a>
+          
+        <a href="https://www.linkedin.com/in/tuchan-anthony-179727176/">
+        <i class="fab fa-linkedin" style="font-size:64px;float:right;color:cornflowerblue" ></i>
+        </a>
+
+      </ul>
+
+      
+        <!-- Separates the Navigation Bar with everything else below -->
+        <div style="padding:20px;margin-top:30px;height:1500px;">
+          <div class="header">
+            <h1 class = "normal">Week 14 - Cleanup Week!</h1>
+          </div>
+          <div class="leftcolumn">
+            <div class = "card">
+            <h5 class = "normal">Date Created: Apr 23, 2025</h5>
+
+
+            <h2 class = "normal">Whats happened this week?</h2>
+
+            <ul>
+              <li>Added a way to login without an account</li>
+              <li>Testing Results Manager (From 23rd April in Results Manager Test report)</li>
+              <li>Added UI Elements</li>
+              <li>Maps are randomly chosen when the game starts</li>
+              <li>Discovered OnDisconnect from FirestoreDatabase Class</li>
+              <li>Added Pause Menu and fixed issues with the Main Menu button check <a href="https://1drv.ms/w/c/5556daf35dadc3a8/Ec_RL2cUr91Fu4XdyySCxhEBA9bGcKG0QtC7NXR5mMxPdA?e=WBPBpT">Operation Pet Photon Network Testing</a></li>
+              <li>Add error message when you dont have a name when trying to join a room</li>
+              <li>ScoreManager Script, SetMaxFoodPerTeam() function has been modified so that teams will only look to pick up one point in a deathmatch</li>
+              <li>Implemented Refresh button again so when they aren’t connected properly they can refresh</li>
+            </ul>
+
+            <h3 style="color: blue;" class = "normal"><a href="https://1drv.ms/w/c/5556daf35dadc3a8/Ec_RL2cUr91Fu4XdyySCxhEBA9bGcKG0QtC7NXR5mMxPdA?e=WBPBpT">Operation Pet Photon Network Test Report</a></h3>
+            <h3 style="color: blue;" class = "normal"><a href="https://1drv.ms/w/c/5556daf35dadc3a8/EdiymKm1sVhOr-fEjoCipxwBK850CaNI5iSR0ehayanI-Q?e=lLbkw3">Results Manager Test Report</a></h3>
+
+            
+                <p>
+                  This week was more about polishing the game and adding in any small features that were needed such as adding in the refresh button again to refresh the lobby because i was having a 
+                  problem where even though a room was open, the game wasn’t properly connected to photon. for more info you can check the Results Manager Test Report from the 23rd April to see the stuff that were fixed.
+                </p>
+
+                <h2 class = "normal">Firestore Disconnect Discovery</h2>
+
+                <img src="..\..\images\Connected Games Images\Week 14\image.png" style="width: 100%;">
+                
+
+                <p>
+                  There was a problem with updating the online status value in the database where sometimes when closing the application
+                   the code to set the value to false sometimes didn’t run. After some research i found out this happens when i close it through task manager which doesn’t call the OnApplicationQuit() function it is treated like a crash.
+                </p>
+
+                <p>
+                  After looking online, checking through firebase documents and trying things out such as Firebase Functions (Which allows code to be run in the database when a condition is met) i then decided to ask Chat GPT giving it the prompt 
+                  “For Firebase for Unity how would i tell Firebase that my player is offline when the game crashes” and it told me about a callback function called “OnDisconnect” that can set values in the database when clients disconnect from Firebase.
+                </p>
+
+                <h2 class = "normal">Showcase of New UI!</h2>
+                <p>
+                  One of the Designers had finished creating the UI elements so i decided to put the UI for the Main Menu and Login Screen along with replacing the buttons. Here is what it looks like.
+                </p>
+
+                <img src="..\..\images\Connected Games Images\Week 14\Week_14_UI_Showcase.gif" style="width: 100%;">
+            <h2 class = "normal">References</h2>
+
+
+            <ul>
+              <li>Firebase.Database.OnDisconnect Class Reference [online], (no date). Firebase. [Viewed 26 April 2025]. Available from: <a href="https://firebase.google.com/docs/reference/unity/class/firebase/database/on-disconnect">https://firebase.google.com/docs/reference/unity/class/firebase/database/on-disconnect</a></li>
+              <li>if gameobject is active? [online], (no date). Unity Discussions. [Viewed 28 April 2025]. Available from: <a href="https://discussions.unity.com/t/if-gameobject-is-active/13770">https://discussions.unity.com/t/if-gameobject-is-active/13770</a></li>
+              <li>Using PNG Image as Image in User Interface [online], (no date). Unity Discussions. [Viewed 24 April 2025]. Available from: <a href="https://discussions.unity.com/t/using-png-image-as-image-in-user-interface/562613">https://discussions.unity.com/t/using-png-image-as-image-in-user-interface/562613</a></li>
+            </ul>
+
+            <h2 class = "normal">AI References</h2>
+            <img src="..\..\images\Connected Games Images\Week 14\image (1).png" style="width: 100%;">
+            <img src="..\..\images\Connected Games Images\Week 14\image (2).png" style="width: 100%;">
+
+          </div>
+          </div>        
+        </div>
+  
+  </body>
+</html>
